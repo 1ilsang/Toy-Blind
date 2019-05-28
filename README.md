@@ -23,7 +23,7 @@
 		``` bash
 		./cmd.sh [target] [option]
 		```
-		<img src=".readmedoc/img/cmd1.png" width="720"/>
+		<img src=".readmedoc/img/cmd1.png" width="650"/>
 	
 License
 ---
