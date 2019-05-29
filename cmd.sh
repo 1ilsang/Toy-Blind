@@ -26,6 +26,9 @@ if [ $target == 'front' ];then
 	elif [ $option == 'dev' ];then
 		echo '\nSCRIPT :: client-dev'
 		npm run dev
+	elif [ $option == 'start' ];then
+		echo '\nSCRIPT :: client-start'
+		npm run build && npm run dev
 	else
 		err
 	fi

@@ -2,7 +2,7 @@
 
 ### 0. 목표
    - 블라인드 앱을 모방해 보자.
-
+	
 ### 1. 기술스택
    - Vue, Vuex, Node, Express, MySQL, Redis: Pub/Sub, JWT, WebSocket
    - Linux, Docker, GCP
@@ -21,7 +21,13 @@
    -	<img src=".readmedoc/img/architecture.png" width="500" alt="architecture" />
    - JWT 토큰을 통해 인증/인가 및 로드벨런싱된 채팅 서버간의 pub/sub 을 위한 Redis.
 
-### 4. 어떻게 실행하나요?
+### 4. 개발과정
+   1. [초반설계 및 Bash 쉘 스크립팅](https://1ilsang.blog.me/221549601659)
+   ...
+
+### 5. 어떻게 실행하나요?
+   - Redis, MySQL 이 설치되어 있어야 합니다.
+   - MySQL 테이블 정보는 덤프파일을 사용해 주세요.
    - 통합 커멘드 라인을 지원합니다
        ``` bash
        chmod +x cmd.sh
