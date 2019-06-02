@@ -1,21 +1,49 @@
 <template>
-    <div >
-        <h2>Toy-Blind</h2>
-        <!-- TODO 클릭하면 로그인 모달창이 떠야하는데 어떻게 해주지? -->
-    </div>
+    <header>
+        <h2 class="h_blind">
+            <router-link to="/">Toy-blind</router-link>
+        </h2>
+        <Gnb v-if="!allMenuToggle"></Gnb>
+        <Aside></Aside>
+        <Hamburger v-if="allMenuToggle"></Hamburger>
+    </header>
 </template>
 
 <script>
+    import Gnb from './header/Gnb';
+    import Aside from './header/Aside';
+    import Hamburger from "./sideMenu/Hamburger";
+    import {EventBus} from "../utils/event-bus";
+
     export default {
-        name: 'header',
+        name: 'Header',
+        components: {
+            Gnb,
+            Aside,
+            Hamburger
+        },
         data() {
             return {
-                msg: 'Welcome to Your Vue.js App'
+                allMenuToggle: false
             }
+        },
+        created() {
+            EventBus.$on('toggleAllMenu', () => this.allMenuToggle = !this.allMenuToggle);
+            EventBus.$on('closeAllMenu', () => this.allMenuToggle = false);
         }
     }
 </script>
 
 <style>
+    header {
+        z-index: 9999;
+        border-bottom: 1px solid #eceef3;
+    }
 
+    .h_blind {
+        display: inline-block;
+        margin: 0;
+        padding: 20px 30px 0;
+        vertical-align: top;
+    }
 </style>
