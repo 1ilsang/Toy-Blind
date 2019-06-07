@@ -1,11 +1,11 @@
 <template>
     <header>
-        <h2 class="h_blind">
+        <h2 class="h_blind" @click="closeAll">
             <router-link to="/">Toy-blind</router-link>
         </h2>
-        <Gnb v-if="!allMenuToggle"></Gnb>
-        <Aside></Aside>
-        <Hamburger v-if="allMenuToggle"></Hamburger>
+        <Gnb v-if="!hamburgerMenu"></Gnb>
+        <Aside :active="isActive"></Aside>
+        <Hamburger v-if="hamburgerMenu"></Hamburger>
     </header>
 </template>
 
@@ -24,12 +24,25 @@
         },
         data() {
             return {
-                allMenuToggle: false
+                hamburgerMenu: false,
+                isActive: ''
+            }
+        },
+        methods: {
+            closeAll() {
+                EventBus.$emit('closeHamburgerMenu');
             }
         },
         created() {
-            EventBus.$on('toggleAllMenu', () => this.allMenuToggle = !this.allMenuToggle);
-            EventBus.$on('closeAllMenu', () => this.allMenuToggle = false);
+            EventBus.$on('toggleHamburgerMenu', () => {
+                this.hamburgerMenu = !this.hamburgerMenu;
+                if(this.isActive === '') this.isActive = 'active';
+                else this.isActive = '';
+            });
+            EventBus.$on('closeHamburgerMenu', () => {
+                this.hamburgerMenu = false;
+                this.isActive = '';
+            });
         }
     }
 </script>

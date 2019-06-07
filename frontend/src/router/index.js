@@ -6,12 +6,12 @@ import NotFound from '../components/error/NotFound';
 import SignUp from "../components/modal/SignUp";
 import WritePost from "../components/modal/WritePost";
 import { EventBus } from "../utils/event-bus";
+import {isLogin} from "../utils/loginMethods";
 
 Vue.use(VueRouter);
 
 const requireAuth = () => (from, to, next) => {
-    const isAuthenticated = false;
-    if(isAuthenticated) return next();
+    if(isLogin()) return next();
     else EventBus.$emit('openModal', 'SignUp');
 };
 

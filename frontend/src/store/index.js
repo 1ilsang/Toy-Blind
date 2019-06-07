@@ -1,11 +1,13 @@
-import {LOGOUT, SET_USER_DATA} from "./mutation-type";
+import {LOGIN, LOGOUT} from "./mutation-type";
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import server from '../utils/server-host';
+import {logout} from "../utils/loginMethods";
+import {EventBus} from "../utils/event-bus";
+import router from '../router';
 
 Vue.use(Vuex);
-
-const authServer = 'http://127.0.0.1:3000';
 
 export default new Vuex.Store({
     state: {
@@ -17,21 +19,42 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        [SET_USER_DATA](state, payload) {
-            state.userData = payload;
+        [LOGIN](state, {data}) {
+            state.userData = data;
+            localStorage.accessToken = data.accessToken;
+            localStorage.setItem('userData', JSON.stringify(data.userData));
+            enhanceAccessToken();
         },
         [LOGOUT](state) {
             state.userData = '';
+            state.accessToken = '';
+            logout();
         }
     },
-    // FIXME 이거 옳은건가? 인증서버 열어서 확인해 봐야함.
     actions: {
-        [SET_USER_DATA]({commit, state}) {
-            return axios.post(`${authServer}/login`, state)
-                .then(({data}) => commit('SET_USER_DATA', data));
+        [LOGIN]({commit}, {email, password}) {
+            return axios.post(`${server.AuthServer}/auth/login`, {email, password})
+                .then(({data}) => {
+                    commit('LOGIN', data);
+                })
+                .then(() => {
+                    EventBus.$emit('closeHamburgerMenu');
+                    router.push('/');
+                })
+                .catch(e => console.log(e));
         },
         [LOGOUT]({commit}) {
-            commit('LOGOUT');
+            return axios.get(`${server.AuthServer}/auth/logout`)
+                .then(() => {
+                    axios.defaults.headers.common['Authorization'] = undefined;
+                    commit('LOGOUT');
+                }).catch(e => console.log(e));
         }
     }
 });
+// 새로고침해도 엑세스토큰 헤더에 박도록 함.
+const enhanceAccessToken = () => {
+    const {accessToken} = localStorage;
+    if (!accessToken) return;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+};

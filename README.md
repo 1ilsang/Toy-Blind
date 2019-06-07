@@ -24,6 +24,7 @@
 ### 4. 개발과정
    1. [초반설계 및 Bash 쉘 스크립팅](https://1ilsang.blog.me/221549601659)
    2. [Vue 프론트 따라 만들기](https://1ilsang.blog.me/221552922387)
+   3. [회원가입/인증/로그아웃 - nodeMailer, JWT, Redis, MySQL, Vuex](https://1ilsang.blog.me/221556402323)
    <br>
    개발중 ...
 

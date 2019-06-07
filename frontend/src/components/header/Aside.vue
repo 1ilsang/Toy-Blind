@@ -1,14 +1,14 @@
 <template>
     <div class="aside">
         <ul>
-            <li @click="closeAllMenu">
+            <li @click="closeHamburgerMenu">
                 <router-link to="/search" class="btn_srch" title="search"></router-link>
             </li>
-            <li>
+            <li @click="closeHamburgerMenu">
                 <router-link to="/writepost" title="write a post" class="btn_writePost"></router-link>
             </li>
             <li>
-                <button type="button" class="btn_menu" @click="openAllMenu" v-bind:class="isActive">
+                <button type="button" class="btn_menu" @click="toggleHamburgerMenu" v-bind:class="isActive">
                     <span class="ico_hamburger"></span>
                 </button>
             </li>
@@ -21,25 +21,19 @@
 
     export default {
         name: 'Aside',
+        props: ['active'],
         data() {
             return {
-                isActive: ''
+                isActive: this.active
             }
         },
         components: {},
         methods: {
-            closeAllMenu() {
-                this.isActive = '';
-                EventBus.$emit('closeAllMenu');
+            closeHamburgerMenu() {
+                EventBus.$emit('closeHamburgerMenu');
             },
-            openAllMenu() {
-                if(this.isActive === 'active') {
-                    EventBus.$emit('toggleAllMenu');
-                    this.isActive = '';
-                } else {
-                    EventBus.$emit('toggleAllMenu');
-                    this.isActive = 'active';
-                }
+            toggleHamburgerMenu() {
+                EventBus.$emit('toggleHamburgerMenu');
             }
         }
     }
@@ -115,7 +109,7 @@
     .btn_menu.active .ico_hamburger:before {
         top: 0;
         -webkit-transform: rotate(-45deg);
-        /* transform: rotate(-45deg); */
+         transform: rotate(-45deg);
     }
 
     .btn_menu .ico_hamburger:after, .btn_menu .ico_hamburger:before {

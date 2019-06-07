@@ -11,16 +11,22 @@
                         <div class="clst_wrap">
                             <ul class="loginform">
                                 <li>
-                                    <div class="input_wrap"><input type="text" placeholder="Enter your work email.">
+                                    <div class="input_wrap"><input type="text" placeholder="Enter your work email."
+                                                                   v-model="email">
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="input_wrap"><input type="password" placeholder="Password"></div>
+                                    <div class="input_wrap"><input type="password" placeholder="Password"
+                                                                   v-model="password"></div>
                                 </li>
                             </ul>
                             <div class="fieldsubmit">
-                                <button type="button" class="submit disabled"><strong>Log in</strong></button> <!---->
-                            </div> <!---->
+                                <button type="button" class="submit disabled" @click="login"><strong>Log in</strong>
+                                </button> <!---->
+                            </div>
+                            <span class="msg alert" v-if="message !== ''">
+                                {{message}}
+                            </span>
                             <div class="or"><span>or</span></div>
                             <div class="fieldsubmit security">
                                 <button type="button" class="submit"><strong>Log in with security code</strong></button>
@@ -35,10 +41,40 @@
 
 <script>
     import {modalMethods} from '../mixins/modalMethods';
+    import {mapGetters} from 'vuex';
+
     export default {
         name: 'Login',
         mixins: [modalMethods],
+        data() {
+            return {
+                email: '',
+                password: '',
+                message: '',
+                test: {}
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'getUserData'
+            ])
+        },
         methods: {
+            login() {
+                if (this.email.trim() === '' || this.password.trim() === '') {
+                    alert('ERR: Please check your input.');
+                    return;
+                }
+                let email = this.email;
+                let password = this.password;
+                this.$store.dispatch('LOGIN', {email, password})
+                    .then(() => this.closeModal())
+                    .catch((message) => this.message = message.response.data);
+            }
+        },
+        created() {
+            // this.test = this.$store.getters.getUserData();
+            // console.log(this.getUserData);
         }
     }
 </script>
@@ -263,5 +299,17 @@
         background-size: 600px 900px;
         background-position: -40px -364px;
         z-index: 1;
+    }
+
+    .ly_signup .contents .msg.alert {
+        color: #da3238;
+    }
+
+    .ly_signup .contents .msg {
+        display: block;
+        margin-top: 8px;
+        min-height: 28px;
+        font-size: 12px;
+        font-weight: 400;
     }
 </style>

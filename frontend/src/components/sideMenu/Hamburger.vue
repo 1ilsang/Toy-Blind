@@ -1,30 +1,32 @@
 <template>
     <div>
         <div class="fnc_top">
-        <div class="welcome">
-            <div class="signup">
-                <button title="LOG IN" class="btn_logIn" @click="openModal('Login')">LOG IN</button>
-                <button title="SIGN UP" class="btn_signIn" @click="openModal('SignUp')">SIGN UP</button>
+            <div class="welcome">
+                <div class="signup" v-if="!isLogin">
+                    <button title="LOG IN" class="btn_logIn" @click="openModal('Login')">LOG IN</button>
+                    <button title="SIGN UP" class="btn_signIn" @click="openModal('SignUp')">SIGN UP</button>
+                </div>
+                <div class="signup" v-if="isLogin">
+                    <button class="btn_signIn" @click="logout">LOG-OUT</button>
+                </div>
             </div>
-        </div>
         </div>
         <div class="ly_submenu">
             <div class="flex submenu">
                 <div class="ly_menu">
                     <div>
                         <div class="gnb_list">
-                            <ul><!----> <!----><!----> <!----><!----> <!----><!----> <!----><!----> <!----><!---->
-                                <!---->
+                            <ul>
                                 <li class="topics_category"><span class="uselect active"><span></span> <span><a><i>All Topics</i></a></span></span>
-                                    <!---->
-                                    <div class="fnc"><a style="display:;"><span class="txt_manage">Manage Topics</span></a>
+                                    <div class="fnc"><a style="display:none"><span
+                                            class="txt_manage">Manage Topics</span></a>
                                         <div style="display:none;"><a
                                                 onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Cancel');"><span
                                                 class="btn">Cancel</span></a> <a
                                                 onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Save');"><span
                                                 class="btn">Save</span></a></div>
                                     </div>
-                                    <div style="display:;">
+                                    <div>
                                         <div class="option" style="display:none;"><span
                                                 onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Select-all');"
                                                 class="select"><em>SELECT ALL</em></span> <span class="sort"><span><span
@@ -106,79 +108,8 @@
                                             </a></li>
                                         </ul>
                                     </div>
-                                </li> <!----></ul>
-                            <!--<div class="signup_lead_area"><p>-->
-                                <!--Join now to get more access to your favorite topics<br>-->
-                                <!--and exclusive channels.-->
-                            <!--</p>-->
-                                <!--<button type="button" name="button" class="submit"><strong class="next">SIGN UP</strong>-->
-                                <!--</button>-->
-                            <!--</div>-->
-                            <!--<div class="motive">-->
-                                <!--Already have an account? <a><span class="login_link">LOG IN</span></a></div>-->
+                                </li></ul>
                         </div>
-                        <!--<div class="menu seo">-->
-                            <!--<div class="m_about"><strong>Company</strong>-->
-                                <!--<ul>-->
-                                    <!--<li><a href="/whyBlind"-->
-                                           <!--onclick="ga('send', 'event', 'Menu', 'Why-blind', 'All-menu');"-->
-                                           <!--class="">Why Blind</a></li>-->
-                                    <!--<li><a href="/about" onclick="ga('send', 'event', 'Menu', 'About', 'All-menu');"-->
-                                           <!--class="">About Us</a></li>-->
-                                    <!--<li><a href="http://blog.teamblind.com" target="_blank"-->
-                                           <!--onclick="ga('send', 'event', 'Menu', 'Blog', 'All-menu');">Blog</a></li>-->
-                                    <!--<li><a onclick="ga('send', 'event', 'Menu', 'Careers', 'All-menu');">Careers</a>-->
-                                    <!--</li>-->
-                                    <!--<li>-->
-                                        <!--<div class="rts_ad"><a href="https://www.rooftopslushie.com" target="_blank"-->
-                                                               <!--onclick="ga('send', 'event', 'Menu', 'Rooftop-slushie', 'All-menu');"><span-->
-                                                <!--class="ico ico_rts_logo"><i class="blind">Rooftop Slushie BI</i></span>-->
-                                            <!--<span>Rooftop Slushie</span><em class="befefit">Give Advice. Get Paid.</em></a>-->
-                                        <!--</div>-->
-                                    <!--</li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                            <!--<div class="m_support"><strong>Support</strong>-->
-                                <!--<ul>-->
-                                    <!--<li><a href="/community-guidelines"-->
-                                           <!--onclick="ga('send', 'event', 'Menu', 'Community Guidelines', 'All-menu');"-->
-                                           <!--class="">Community Guidelines</a></li>-->
-                                    <!--<li><a href="/faqs" onclick="ga('send', 'event', 'Menu', 'FAQs', 'All-menu');"-->
-                                           <!--class="">FAQs</a>-->
-                                    <!--</li>-->
-                                    <!--<li><a href="/updates" onclick="ga('send', 'event', 'Menu', 'Updates', 'All-menu');"-->
-                                           <!--class="">Updates</a></li>-->
-                                    <!--<li><a href="/sitemap" onclick="ga('send', 'event', 'Menu', 'Sitemap', 'All-menu');"-->
-                                           <!--class="">Sitemap</a></li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="sns">-->
-                            <!--<ul class="list">-->
-                                <!--<li><a href="https://www.facebook.com/BlindApp" target="_blank"-->
-                                       <!--onclick="ga('send', 'event', 'SNS', 'FB', 'All-menu');" class="fb"><i-->
-                                        <!--class="blind">Facebook</i></a>-->
-                                <!--</li>-->
-                                <!--<li><a href="https://instagram.com/teamblind" target="_blank"-->
-                                       <!--onclick="ga('send', 'event', 'SNS', 'Insta', 'All-menu');" class="insta"><i-->
-                                        <!--class="blind">Instagram</i></a></li>-->
-                                <!--<li><a href="https://twitter.com/teamblindapp" target="_blank"-->
-                                       <!--onclick="ga('send', 'event', 'SNS', 'Twitter', 'All-menu');" class="tw"><i-->
-                                        <!--class="blind">Twitter</i></a></li>-->
-                                <!--<li><a href="https://medium.com/@BlindApp" target="_blank"-->
-                                       <!--onclick="ga('send', 'event', 'SNS', 'Medium', 'All-menu');" class="md"><i-->
-                                        <!--class="blind">Medium</i></a></li>-->
-                                <!--<li><a href="/rss" onclick="ga('send', 'event', 'SNS', 'RSS', 'All-menu');"-->
-                                       <!--class="rss_sns"><i-->
-                                        <!--class="blind">RSS and Atom Feeds</i></a></li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                        <!--<div class="footer"><p class="copy">-->
-                            <!--© 2018 Teamblind, Inc. <br><a href="/setting/privacy" target="_blank">Privacy</a> and <a-->
-                                <!--href="/setting/term" target="_blank">Terms</a></p>-->
-                            <!--<div class="appDown"><a class="apple"><i class="blind">appstore Download Link</i></a> <a-->
-                                    <!--class="google"><i class="blind">playstore Download Link</i></a></div>-->
-                        <!--</div>-->
                     </div>
                 </div>
             </div>
@@ -188,10 +119,25 @@
 
 <script>
     import {modalMethods} from "../mixins/modalMethods";
+    import {isLogin} from "../../utils/loginMethods";
 
     export default {
         name: 'Hamburger',
-        mixins: [modalMethods]
+        mixins: [modalMethods],
+        data() {
+            return {
+                isLogin: ''
+            }
+        },
+        methods: {
+            logout() {
+                this.$store.dispatch('LOGOUT')
+                    .then(() => this.$router.push('/'));
+            }
+        },
+        created() {
+            this.isLogin = isLogin();
+        }
     }
 </script>
 
@@ -201,6 +147,7 @@
         z-index: 10000;
         position: relative;
     }
+
     .fnc_top .welcome .signup {
         position: absolute;
         top: 20px;
@@ -243,9 +190,11 @@
         cursor: pointer;
         text-align: center;
     }
+
     ul {
         list-style: none;
     }
+
     .fnc_top .welcome .signup > button {
         color: #fff;
         font-size: 14px;
@@ -310,24 +259,29 @@
         font-size: 14px;
         font-weight: 700;
     }
+
     .uselect span:last-of-type a {
         font-size: 12px;
         font-weight: 700;
         color: #222;
         padding-right: 13px;
     }
+
     a {
         text-decoration: none;
         cursor: pointer;
     }
+
     em, i {
         font-style: normal;
     }
+
     .topics_category .fnc {
         position: absolute;
         right: 0;
         top: 8px;
     }
+
     .topics_category .fnc .txt_manage {
         display: inline-block;
         margin-top: 7px;
@@ -335,13 +289,16 @@
         font-weight: 700;
         text-decoration: underline;
     }
+
     .topics_category .fnc span {
         text-transform: uppercase;
     }
-    .topics_category .fnc>div {
+
+    .topics_category .fnc > div {
         vertical-align: top;
         font-size: 0;
     }
+
     .topics_category .fnc .btn {
         display: inline-block;
         min-width: auto;
@@ -355,15 +312,18 @@
         font-weight: 700;
         color: #94969b;
     }
+
     .topics_category .option {
         position: static;
         margin: 10px 0 8px;
     }
-    .topics_category .option>span.select {
+
+    .topics_category .option > span.select {
         cursor: pointer;
         color: #94969b;
     }
-    .topics_category .option>span {
+
+    .topics_category .option > span {
         display: inline-block;
         vertical-align: top;
         margin: 0;
@@ -372,9 +332,11 @@
         font-weight: 700;
         cursor: pointer;
     }
-    .topics_category .option>span.sort {
+
+    .topics_category .option > span.sort {
         color: #222;
     }
+
     .sort {
         margin-top: 15px;
         background: transparent;
@@ -382,19 +344,22 @@
         font-size: 10px;
         line-height: 17px;
     }
+
     .topics_category .list {
         display: flex;
         flex-wrap: wrap;
     }
+
     .topics_category .list li {
         width: 50%;
         min-width: 0;
         padding: 0 18px 0 0;
-        min-height: 38px!important;
+        min-height: 38px !important;
         margin-top: 10px;
         box-sizing: border-box;
         line-height: 1.6em;
     }
+
     .topics_category .list li div.bx {
         position: relative;
         display: flex;
@@ -404,6 +369,7 @@
         font-weight: 300;
         padding: 0;
     }
+
     .topics_category .list li div.bx span {
         display: inline-block;
         word-break: break-all;
@@ -411,16 +377,20 @@
         letter-spacing: -.2px;
         line-height: 1.26em;
     }
+
     .point {
         color: #da3238;
     }
+
     .topics_category .list li.point .bx span:first-of-type {
         position: relative;
         display: inline-block;
     }
+
     .topics_category .list li.disabled .bx span {
         color: #94969b;
     }
+
     .topics_category .list li.point .bx span:first-of-type:after {
         content: "";
         position: absolute;
