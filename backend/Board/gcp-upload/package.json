@@ -1,0 +1,12 @@
+{
+  "name": "gcp-upload",
+  "version": "1.0.0",
+  "description": "Cloud Functions 이미지 리사이징",
+  "main": "index.js",
+  "author": "Zerocho",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^1.6.0",
+    "gm": "^1.23.1"
+  }
+}

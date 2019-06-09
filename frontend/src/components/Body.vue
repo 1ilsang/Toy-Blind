@@ -1,10 +1,11 @@
 <template>
-    <section id="container" role="main">
-        <Lnb></Lnb>
-        <!-- TODO 카드 리스트(인피니트), 디테일 아키텍처(여기다 할것인가?), 댓글 등 작업 해야함. -->
-        <ListArea v-if="!isDetail"></ListArea>
-        <ListCardDetail v-if="isDetail"></ListCardDetail>
-    </section>
+    <div id="wrap">
+        <section id="container" role="main">
+            <Lnb></Lnb>
+            <ListArea v-if="!isDetail"></ListArea>
+            <ListCardDetail v-if="isDetail"></ListCardDetail>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -22,6 +23,14 @@
         data() {
             return {
                 isDetail: false
+            }
+        },
+        watch: {
+            '$route': 'setDetail'
+        },
+        methods: {
+            setDetail() {
+                this.isDetail = this.$route.path.indexOf('articles') !== 1;
             }
         }
     };

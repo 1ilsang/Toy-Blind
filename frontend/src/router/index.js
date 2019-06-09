@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
-import Wrap from '../components/Wrap'
+import Body from '../components/Body'
 import Search from '../components/Search'
 import NotFound from '../components/error/NotFound';
 import SignUp from "../components/modal/SignUp";
 import WritePost from "../components/modal/WritePost";
 import { EventBus } from "../utils/event-bus";
-import {isLogin} from "../utils/loginMethods";
+import {isLogin, enhanceAccessToken} from "../utils/loginMethods";
 
 Vue.use(VueRouter);
 
@@ -19,12 +19,17 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         { path: '/', redirect: '/articles/Topics' },
-        { path: '/articles/:topic', component: Wrap },
+        { path: '/article/:title', component: Body },
+        { path: '/articles/:topic', component: Body },
         { path: '/writepost', component: WritePost, beforeEnter: requireAuth() },
-        { path: '/signup', component: SignUp },
         { path: '/search', component: Search },
         { path: '*', component: NotFound }
     ]
+});
+
+router.beforeEach((to, from, next) => {
+    enhanceAccessToken();
+    next();
 });
 
 export default router;

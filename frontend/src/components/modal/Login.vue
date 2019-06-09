@@ -32,16 +32,16 @@
                                 <button type="button" class="submit"><strong>Log in with security code</strong></button>
                             </div>
                         </div>
-                        <div class="motive">
-                            New to Blind? <span class="login_link" @click="openModal('SignUp')">SIGN UP</span></div>
-                    </div> <!----></div>
-            </div> <!----></div>
+                        <div class="motive">New to Blind? <span class="login_link" @click="openModal('SignUp')">SIGN UP</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     import {modalMethods} from '../mixins/modalMethods';
-    import {mapGetters} from 'vuex';
 
     export default {
         name: 'Login',
@@ -50,14 +50,8 @@
             return {
                 email: '',
                 password: '',
-                message: '',
-                test: {}
+                message: ''
             }
-        },
-        computed: {
-            ...mapGetters([
-                'getUserData'
-            ])
         },
         methods: {
             login() {
@@ -68,13 +62,10 @@
                 let email = this.email;
                 let password = this.password;
                 this.$store.dispatch('LOGIN', {email, password})
-                    .then(() => this.closeModal())
-                    .catch((message) => this.message = message.response.data);
+                    .then(e => this.message = e);
             }
         },
         created() {
-            // this.test = this.$store.getters.getUserData();
-            // console.log(this.getUserData);
         }
     }
 </script>

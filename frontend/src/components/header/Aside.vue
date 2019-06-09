@@ -8,7 +8,7 @@
                 <router-link to="/writepost" title="write a post" class="btn_writePost"></router-link>
             </li>
             <li>
-                <button type="button" class="btn_menu" @click="toggleHamburgerMenu" v-bind:class="isActive">
+                <button type="button" class="btn_menu" @click="toggleHamburgerMenu" v-bind:class="active">
                     <span class="ico_hamburger"></span>
                 </button>
             </li>
@@ -22,12 +22,6 @@
     export default {
         name: 'Aside',
         props: ['active'],
-        data() {
-            return {
-                isActive: this.active
-            }
-        },
-        components: {},
         methods: {
             closeHamburgerMenu() {
                 EventBus.$emit('closeHamburgerMenu');

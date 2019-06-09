@@ -181,4 +181,9 @@
     em {
         font-style: normal;
     }
+    a {
+        color: #333;
+        cursor: pointer;
+        text-decoration: none;
+    }
 </style>

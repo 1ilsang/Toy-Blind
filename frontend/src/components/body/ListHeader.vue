@@ -1,10 +1,11 @@
 <template>
     <div class="lst_header">
-        <div class="wrap"><h1 class="">
-            All Topics
-        </h1>
+        <div class="wrap">
+            <h1 class="">All Topics</h1>
             <h2 class="h_tit_lst blind">article list</h2>
             <button class="btn_follow active" style="display: none;"><span class="blind">+ Follow</span></button>
+            <a href="https://1ilsang.blog.me"><h1 class="blog" style="color: cornflowerblue">1ilsang.blog.me</h1></a>
+            <hr>
         </div>
     </div>
 </template>
@@ -50,4 +51,7 @@
         padding-top: 11px;
     }
 
+    .blog {
+        float: right;
+    }
 </style>

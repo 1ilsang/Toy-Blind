@@ -1,3 +1,4 @@
 {
-  "AuthServer": "http://127.0.0.1:3000"
+  "AuthServer": "http://127.0.0.1:3000",
+  "BoardServer": "http://127.0.0.1:3001"
 }

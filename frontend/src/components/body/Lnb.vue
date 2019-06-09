@@ -5,28 +5,38 @@
                 <div class="slide_tab swiper-container-initialized swiper-container-horizontal swiper-container-free-mode swiper-container-android">
                     <ul class="categorys_wrap swiper-wrapper"
                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                        <li data-idx="0" class="category swiper-slide active swiper-slide-prev"><a
-                                href="/articles/Topics"
-                                class="nuxt-link-exact-active nuxt-link-active"
-                                title="Topics">
-                            All
-                        </a></li>
-                        <li data-idx="1" class="category swiper-slide point swiper-slide-active"><a href="/articles/IPO"
-                                                                                                  class=""
-                                                                                                  title="IPO">
-                            IPO
-                        </a></li>
-                        <li data-idx="2" class="category swiper-slide swiper-slide-next"><a href="/articles/Tech-Careers" class=""
-                                                                          title="Tech Careers">
-                            Tech Careers
-                        </a></li>
-                        <li data-idx="3" class="category swiper-slide"><a href="/articles/Misc" class="" title="Misc.">
-                            Misc.
-                        </a></li>
-                        <li data-idx="4" class="category swiper-slide"><a href="/articles/Compensation" class=""
+                        <!-- FIXME topics 디비에서 땡겨오면 v-for 로 이부분 깔끔하게 할것. -->
+                        <li data-idx="0" class="category swiper-slide swiper-slide-prev" :class="[clickedTopic === 'Topics' ? 'active' : '']" @click="changeTopic('Topics')">
+                            <router-link
+                                    to="/articles/Topics"
+                                    class="nuxt-link-exact-active nuxt-link-active"
+                                    title="Topics">
+                                All
+                            </router-link>
+                        </li>
+                        <li data-idx="1" class="category swiper-slide point swiper-slide-active" :class="[clickedTopic === 'IPO' ? 'active' : '']" @click="changeTopic('IPO')">
+                            <router-link to="/articles/IPO"
+                                         class=""
+                                         title="IPO">
+                                IPO
+                            </router-link>
+                        </li>
+                        <li data-idx="2" class="category swiper-slide swiper-slide-next" :class="[clickedTopic === 'Tech' ? 'active' : '']" @click="changeTopic('Tech')">
+                            <router-link to="/articles/Tech-Careers" class=""
+                                         title="Tech Careers">
+                                Tech Careers
+                            </router-link>
+                        </li>
+                        <li data-idx="3" class="category swiper-slide" :class="[clickedTopic === 'Misc' ? 'active' : '']" @click="changeTopic('Misc')">
+                            <router-link to="/articles/Misc" class="" title="Misc.">
+                                Misc.
+                            </router-link>
+                        </li>
+                        <li data-idx="4" class="category swiper-slide" :class="[clickedTopic === 'Compensation' ? 'active' : '']" @click="changeTopic('Compensation')">
+                            <router-link to="/articles/Compensation" class=""
                                                                           title="Compensation">
                             Compensation
-                        </a></li>
+                        </router-link></li>
                         <li data-idx="5" class="category swiper-slide"><a href="/articles/Money" class="" title="Money">
                             Money
                         </a></li>
@@ -103,8 +113,19 @@
 </template>
 
 <script>
+    // FIXME swiper 분석해서 클릭시 active 띄우는거 다시해보기
     export default {
-        name: 'Lnb'
+        name: 'Lnb',
+        data() {
+            return  {
+                clickedTopic: 'Topics'
+            }
+        },
+        methods: {
+            changeTopic(e) {
+                this.clickedTopic = e;
+            }
+        }
     }
 </script>
 
@@ -112,6 +133,7 @@
     #container .lnb {
         z-index: 9998;
     }
+
     .lnb {
         position: -webkit-sticky;
         position: sticky;
@@ -148,6 +170,7 @@
         cursor: pointer;
         text-decoration: none;
     }
+
     .mask:after {
         right: 0;
         background-position: 100% 0;
@@ -178,7 +201,8 @@
     .mask div {
         width: 0;
     }
-    .lnb .mask .point>a:first-of-type:after {
+
+    .lnb .mask .point > a:first-of-type:after {
         content: "";
         position: absolute;
         top: 10px;

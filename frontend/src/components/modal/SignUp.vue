@@ -47,6 +47,7 @@
                 <div v-if="phase===3" class="phase3">
                     <br>
                     <input v-model="nickname" type="text" placeholder="Enter nickname"><br>
+                    <input v-model="company" type="text" placeholder="Enter your company"><br>
                     <input v-model="password" type="password" placeholder="Enter password"><br>
                     <input v-model="password2" type="password" placeholder="One more enter password"><br>
                     <br><span>Select your Role</span><br>
@@ -97,6 +98,7 @@
                 nickname: '',
                 password: '',
                 password2: '',
+                company: '',
                 role: ''
             }
         },
@@ -147,7 +149,7 @@
             submit() {
                 if (this.password !== this.password2 || this.password.trim() === '' ||
                     this.inputEmail.trim() === '' || this.verifyCode.trim() === '' ||
-                    this.nickname.trim() === '' || this.role.trim() === '') {
+                    this.nickname.trim() === '' || this.role.trim() === '' || this.company.trim() === '') {
 
                     alert('ERR: Please check your input.');
                     return;
@@ -158,7 +160,8 @@
                     'email': this.inputEmail,
                     'nickname': this.nickname,
                     'password': this.password,
-                    'role': this.role
+                    'role': this.role,
+                    'company': this.company
                 }).then(() => {
                     alert('Success sign up!');
                     this.openModal('Login');
