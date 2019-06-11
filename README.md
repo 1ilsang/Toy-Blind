@@ -27,6 +27,7 @@
    2. [Vue 프론트 따라 만들기](https://1ilsang.blog.me/221552922387)
    3. [회원가입/인증/로그아웃 - nodeMailer, JWT, Redis, MySQL, Vuex](https://1ilsang.blog.me/221556402323)
    4. [게시글 CRUD - 무한스크롤, 이미지 리사이징, GCP: Storage, Cloud function](https://1ilsang.blog.me/221558340615)
+   5. [Plugin 설정과 Vuex 모듈화, 단순 Socket 채팅방 구현](https://1ilsang.blog.me/221560032593)
    <br>
    개발중 ...
 

@@ -8,7 +8,6 @@
 <script>
     import Room from "./chat/Room";
     import RoomList from "./chat/RoomList";
-    import {mapGetters} from "vuex";
 
     export default {
         name: 'Chat',
@@ -16,15 +15,9 @@
             Room,
             RoomList
         },
-        computed: {
-            ...mapGetters([
-                'getUserData'
-            ])
-        },
         data() {
             return {
-                open: false,
-                idx: ''
+                open: false
             }
         },
         methods: {
