@@ -1,15 +1,19 @@
-import {DELETE_POST, GET_POST, GET_POST_LIST, LOGIN, LOGOUT, UPDATE_POST, WRITE_POST} from "./mutation-type";
+import {DELETE_POST, GET_POST, GET_POST_LIST, LOGIN, LOGOUT, UPDATE_POST, WRITE_POST} from "./const/mutation-type";
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-import server from '../utils/server-host';
+import server from '../const/server-host';
 import {logout} from "../utils/loginMethods";
 import {EventBus} from "../utils/event-bus";
 import router from '../router';
+import socket from './modules/socket';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    modules: {
+        socket
+    },
     state: {
         userData: JSON.parse(localStorage.getItem('userData')) || {}
     },

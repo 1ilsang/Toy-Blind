@@ -186,4 +186,11 @@
         cursor: pointer;
         text-decoration: none;
     }
+    .lst_area {
+        position: relative;
+        border-top: 10px solid #eceef3;
+        padding: 0;
+        border-bottom: 0;
+        background-color: #fff;
+    }
 </style>

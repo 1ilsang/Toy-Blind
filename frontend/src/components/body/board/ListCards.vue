@@ -39,8 +39,8 @@
 </template>
 
 <script>
-    import {dateFilters} from "../mixins/dateUtils";
-    import {convertDescription} from "../mixins/descriptionUtils";
+    import {dateFilters} from "../../mixins/dateUtils";
+    import {convertDescription} from "../../mixins/descriptionUtils";
 
     export default {
         name: 'ListCards',

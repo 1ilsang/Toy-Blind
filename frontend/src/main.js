@@ -3,6 +3,8 @@ import App from './App.vue'
 import store from './store/index';
 import axios from 'axios';
 import router from './router';
+import './plugins/socketPlugin';
+import Directives from './plugins/directives';
 
 Vue.prototype.$http = axios;
 
@@ -12,6 +14,8 @@ new Vue({
     store,
     render: h => h(App)
 });
+
+Vue.use(Directives);
 
 // TODO Change :: import Swiper Module
 let mySwiper = new Swiper('.swiper-container-free-mode', {

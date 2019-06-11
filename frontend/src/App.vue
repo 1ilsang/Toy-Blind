@@ -4,7 +4,8 @@
         <div>
             <router-view></router-view>
         </div>
-        <a href="javascript:window.scrollTo(0,0);" class="top_btn" style="bottom: 20px; display: block;">
+        <a v-if="isBottom" href="javascript:window.scrollTo(0,0);" class="top_btn"
+           style="bottom: 20px; display: block;">
             <span class="blind">Top</span>
         </a>
         <Modal></Modal>
@@ -23,7 +24,18 @@
         },
         data() {
             return {
+                isBottom: false
             }
+        },
+        methods: {
+            topVisible() {
+                window.addEventListener('scroll', () => {
+                    this.isBottom = !!document.documentElement.scrollTop;
+                });
+            }
+        },
+        mounted() {
+            this.topVisible();
         }
     }
 </script>
@@ -75,5 +87,11 @@
     div {
         margin: 0;
         padding: 0;
+    }
+
+    a {
+        color: #333;
+        cursor: pointer;
+        text-decoration: none;
     }
 </style>

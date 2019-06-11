@@ -81,7 +81,7 @@
 
 <script>
     import {modalMethods} from "../mixins/modalMethods";
-    import server from '../../utils/server-host';
+    import server from '../../const/server-host';
 
     export default {
         name: 'SignUp',

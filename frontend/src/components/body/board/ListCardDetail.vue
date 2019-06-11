@@ -346,8 +346,8 @@
 
 <script>
     import {mapGetters} from "vuex";
-    import {dateFilters} from "../mixins/dateUtils";
-    import WriteComment from "./WriteComment";
+    import {dateFilters} from "../../mixins/dateUtils";
+    import WriteComment from "./comment/WriteComment";
 
     export default {
         name: 'ListCardDetail',

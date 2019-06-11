@@ -9,9 +9,9 @@
 </template>
 
 <script>
-    import Lnb from './body/Lnb';
-    import ListArea from "./body/ListArea";
-    import ListCardDetail from "./body/ListCardDetail";
+    import Lnb from './board/Lnb';
+    import ListArea from "./board/ListArea";
+    import ListCardDetail from "./board/ListCardDetail";
 
     export default {
         name: 'Body',

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import {EventBus} from "../../utils/event-bus";
+    import {EventBus} from "../../../../utils/event-bus";
     import {mapGetters} from "vuex";
 
     export default {

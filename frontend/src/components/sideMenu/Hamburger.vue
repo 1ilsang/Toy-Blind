@@ -8,6 +8,10 @@
                 </div>
                 <div class="signup" v-if="isLogin">
                     <button class="btn_signIn" @click="logout">LOG-OUT</button>
+                    <button class="btn_logIn">{{getUserData.nickname}}</button>
+                    <button class="btn_logIn" @click="goChat">
+                        <router-link to="/chat" style="color: white;">채팅하기</router-link>
+                    </button>
                 </div>
             </div>
         </div>
@@ -17,32 +21,16 @@
                     <div>
                         <div class="gnb_list">
                             <ul>
-                                <li class="topics_category"><span class="uselect active"><span></span> <span><a><i>All Topics</i></a></span></span>
-                                    <div class="fnc"><a style="display:none"><span
-                                            class="txt_manage">Manage Topics</span></a>
-                                        <div style="display:none;"><a
-                                                onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Cancel');"><span
-                                                class="btn">Cancel</span></a> <a
-                                                onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Save');"><span
-                                                class="btn">Save</span></a></div>
-                                    </div>
+                                <li class="topics_category">
+                                    <span class="uselect active">
+                                        <span><a><i>All Topics</i></a></span>
+                                    </span>
                                     <div>
-                                        <div class="option" style="display:none;"><span
-                                                onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Select-all');"
-                                                class="select"><em>SELECT ALL</em></span> <span class="sort"><span><span
-                                                style="display:none;"> <span class="popper"><div
-                                                class="more_menu menu_basic"><ol><li><a class="selected"><span
-                                                class="item">HOT TOPICS</span></a></li><li><a
-                                                class=""><span
-                                                class="item">ALPHABETICAL ORDER</span></a></li></ol></div></span></span> <span><em
-                                                onclick="ga('send', 'event', 'Manage-topics', 'Setting', 'Order-setting');"><i>HOT TOPICS</i></em></span></span></span>
-                                        </div>
                                         <ul class="list">
-                                            <li><a href="/articles/Topics" title="All Topics"
-                                                   onclick="ga('send', 'event', 'Indiv.-list', 'All-menu', 'Topics-all');"
+                                            <li><router-link to="/articles/Topics" title="All Topics"
                                                    class="">
                                                 <div class="bx"><span>All</span></div>
-                                            </a></li> <!---->
+                                            </router-link></li> <!---->
                                             <li><a href="/articles/Tech-Careers" title="Tech Careers" class="">
                                                 <div class="bx"><span>Tech Careers</span></div>
                                             </a></li>
@@ -108,7 +96,8 @@
                                             </a></li>
                                         </ul>
                                     </div>
-                                </li></ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -120,10 +109,17 @@
 <script>
     import {modalMethods} from "../mixins/modalMethods";
     import {isLogin} from "../../utils/loginMethods";
+    import {mapGetters} from "vuex";
+    import {EventBus} from "../../utils/event-bus";
 
     export default {
         name: 'Hamburger',
         mixins: [modalMethods],
+        computed: {
+            ...mapGetters([
+                'getUserData'
+            ])
+        },
         data() {
             return {
                 isLogin: ''
@@ -133,6 +129,9 @@
             logout() {
                 this.$store.dispatch('LOGOUT')
                     .then(() => this.$router.push('/'));
+            },
+            goChat() {
+                EventBus.$emit('closeHamburgerMenu');
             }
         },
         created() {

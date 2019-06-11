@@ -7,8 +7,8 @@
             <li @click="closeHamburgerMenu">
                 <router-link to="/writepost" title="write a post" class="btn_writePost"></router-link>
             </li>
-            <li>
-                <button type="button" class="btn_menu" @click="toggleHamburgerMenu" v-bind:class="active">
+            <li @click="toggleHamburgerMenu">
+                <button type="button" class="btn_menu" :class="active">
                     <span class="ico_hamburger"></span>
                 </button>
             </li>

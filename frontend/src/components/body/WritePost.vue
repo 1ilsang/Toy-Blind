@@ -1,24 +1,28 @@
 <template>
-    <div class="write-post">
-        <div v-if="isLoading">
-            Loading...
-        </div>
-        <div v-else>
-            <label for="title">Title: </label><input id="title" type="text" v-model="title" placeholder="Title"><br>
-            <label for="description">Description: </label><input id="description" type="text" v-model="description" placeholder="Description"><br>
-            <label for="img">Img: </label><input id="img" type="file" ref="file"><br>
-            <fieldset>
-                <legend>Select Topic</legend><br>
-                <input type="radio" id="all" value="all" v-model="topic">
-                <label for="all">all</label>
-                <input type="radio" id="IPO" value="IPO" v-model="topic">
-                <label for="IPO">IPO</label>
-                <input type="radio" id="Tech-Careers" value="Tech-Careers" v-model="topic">
-                <label for="Tech-Careers">Tech-Careers</label><br><br>
-                <input type="radio" id="Misc" value="Misc" v-model="topic">
-                <label for="Misc">Misc</label><br><br>
-            </fieldset>
-            <button @click="submit">Submit</button>
+    <div style="border-top: 10px solid #eceef3;">
+        <div class="write-post">
+            <div v-if="isLoading">
+                Loading...
+            </div>
+            <div v-else>
+                <label for="title">Title: </label><input id="title" type="text" v-model="title" placeholder="Title"><br>
+                <label for="description">Description: </label><input id="description" type="text" v-model="description"
+                                                                     placeholder="Description"><br>
+                <label for="img">Img: </label><input id="img" type="file" ref="file"><br>
+                <fieldset>
+                    <legend>Select Topic</legend>
+                    <br>
+                    <input type="radio" id="all" value="all" v-model="topic">
+                    <label for="all">all</label>
+                    <input type="radio" id="IPO" value="IPO" v-model="topic">
+                    <label for="IPO">IPO</label>
+                    <input type="radio" id="Tech-Careers" value="Tech-Careers" v-model="topic">
+                    <label for="Tech-Careers">Tech-Careers</label><br><br>
+                    <input type="radio" id="Misc" value="Misc" v-model="topic">
+                    <label for="Misc">Misc</label><br><br>
+                </fieldset>
+                <button @click="submit">Submit</button>
+            </div>
         </div>
     </div>
 </template>
@@ -92,15 +96,18 @@
         margin-right: 20px;
         margin-top: 10px;
     }
+
     .write-post fieldset {
         margin: 10px;
     }
+
     .write-post input {
         border: 1px solid blanchedalmond;
         margin: 5px;
         padding: 5px;
     }
-    .write-post input[type="text"]{
+
+    .write-post input[type="text"] {
         width: 200px;
     }
 
@@ -109,6 +116,7 @@
         color: black;
         background-color: blanchedalmond;
     }
+
     a {
         color: #333;
         cursor: pointer;
