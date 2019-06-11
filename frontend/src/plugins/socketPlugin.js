@@ -8,11 +8,16 @@ const SocketPlugin = {
     install(vue) {
         vue.mixin({});
 
+        vue.prototype.$join = (payload) => {
+            socket.emit('join', payload);
+        };
+
+        vue.prototype.$leave = (payload) => {
+            socket.emit('leave', payload);
+        };
+
         vue.prototype.$sendMessage = (payload) => {
-            socket.emit('chat', {
-                message: payload.message,
-                name: payload.name
-            });
+            socket.emit('chat', payload);
         };
 
         vue.prototype.$socket = socket;

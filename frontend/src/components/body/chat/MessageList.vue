@@ -1,7 +1,7 @@
 <template>
     <div v-auto-bottom="msgs" class="chat-wrap">
         <div v-for="(msg,index) in msgs" v-bind:key="index" class="chat-line">
-            <span class="chat-id">{{msg.from.name}}</span>: <span class="chat-msg">{{msg.message}}</span>
+            <span class="chat-id">{{msg.nickname}}</span>: <span class="chat-msg">{{msg.message}}</span>
         </div>
     </div>
 </template>

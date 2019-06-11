@@ -16,6 +16,7 @@
 
     export default {
         name: 'Room',
+        props: ['roomSeq'],
         data() {
             return {
                 datas: [],
@@ -27,7 +28,9 @@
         },
         computed: {
             ...mapState({
-                'msgDatas': state => state.socket.msgDatas,
+                'msgDatas': state => {
+                    return state.socket.msgDatas;
+                }
             }),
             ...mapGetters([
                 'getUserData'
@@ -39,22 +42,17 @@
                 'deleteMsgData': DELETE_MSG_DATA
             }),
             sendMessage(msg) {
-                this.pushMsgData({
-                    from: {
-                        name: '나',
-                    },
-                    message: msg,
-                });
                 this.$sendMessage({
-                    name: this.getUserData.nickname,
+                    nickname: this.getUserData.nickname,
                     message: msg,
+                    roomSeq: this.roomSeq
                 });
             },
             closeRoom() {
                 this.$emit('closeRoom');
             }
         },
-        created() {
+        beforeCreate() {
             const $ths = this;
             this.$socket.on('chat', (data) => {
                 this.pushMsgData(data);
@@ -63,6 +61,16 @@
         },
         destroyed() {
             this.deleteMsgData();
+            this.$leave({
+                roomSeq: this.roomSeq,
+                nickname: this.getUserData.nickname
+            });
+            this.$sendMessage({
+                nickname: '= SYSTEM =',
+                message: `${this.getUserData.nickname}님이 나가셨습니다.`,
+                roomSeq: this.roomSeq
+            });
+            this.$socket.off('chat');
         }
     };
 </script>

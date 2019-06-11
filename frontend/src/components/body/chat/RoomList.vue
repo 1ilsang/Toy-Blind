@@ -8,11 +8,24 @@
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
         name: 'RoomList',
-        methods : {
-            openRoom(idx) {
-                this.$emit('openRoom', idx);
+        computed: {
+            ...mapGetters([
+                'getUserData'
+            ])
+        },
+        methods: {
+            openRoom(roomSeq) {
+                const msg = {
+                    nickname: this.getUserData.nickname,
+                    roomSeq: roomSeq,
+                    message: `${this.getUserData.nickname}님이 입장하셨습니다.`,
+                };
+                this.$join(msg);
+                this.$emit('openRoom', roomSeq);
             }
         }
     }
@@ -29,9 +42,11 @@
         margin-left: auto;
         margin-right: auto;
     }
+
     .room-list > ul > li:hover {
         background-color: gold;
     }
+
     .room-list button {
         border: 1px solid salmon;
         background-color: white;
