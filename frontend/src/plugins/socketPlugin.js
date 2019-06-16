@@ -2,7 +2,7 @@ import Vue from 'vue';
 import io from 'socket.io-client';
 import server from '../const/server-host';
 
-const socket = io(`${server.ChatServer}`);
+const socket = io.connect(`${server.ChatServer}`, {transports: ['websocket']});
 
 const SocketPlugin = {
     install(vue) {

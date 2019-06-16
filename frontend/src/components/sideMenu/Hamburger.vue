@@ -27,10 +27,12 @@
                                     </span>
                                     <div>
                                         <ul class="list">
-                                            <li><router-link to="/articles/Topics" title="All Topics"
-                                                   class="">
-                                                <div class="bx"><span>All</span></div>
-                                            </router-link></li> <!---->
+                                            <li>
+                                                <router-link to="/articles/Topics" title="All Topics"
+                                                             class="">
+                                                    <div class="bx"><span>All</span></div>
+                                                </router-link>
+                                            </li> <!---->
                                             <li><a href="/articles/Tech-Careers" title="Tech Careers" class="">
                                                 <div class="bx"><span>Tech Careers</span></div>
                                             </a></li>
@@ -109,7 +111,7 @@
 <script>
     import {modalMethods} from "../mixins/modalMethods";
     import {isLogin} from "../../utils/loginMethods";
-    import {mapGetters} from "vuex";
+    import {mapGetters, mapState} from "vuex";
     import {EventBus} from "../../utils/event-bus";
 
     export default {

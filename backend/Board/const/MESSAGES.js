@@ -1,4 +1,5 @@
-exports.validationError = "Please check your validation";
+exports.validationError = "Please check your validation.";
+exports.validationExpired = "Your session is expired. Please login again.";
 exports.loginFail = "Invalid email address or password.";
 exports.alreadyExist = "Already exist";
 exports.emailFail = "Please check email";

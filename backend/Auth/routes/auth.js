@@ -122,6 +122,10 @@ router.get('/logout', token.get, (req, res, next) => {
     });
 });
 
+ router.get('/token-check', token.get, token.check, (req, res, next) => {
+     res.status(200).send({token: req.token});
+ });
+
 router.all('/*', (req, res, next) => {
     next();
 });

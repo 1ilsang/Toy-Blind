@@ -19,14 +19,22 @@
         },
         methods: {
             openRoom(roomSeq) {
-                const msg = {
-                    nickname: this.getUserData.nickname,
-                    roomSeq: roomSeq,
-                    message: `${this.getUserData.nickname}님이 입장하셨습니다.`,
-                };
-                this.$join(msg);
-                this.$emit('openRoom', roomSeq);
+                this.$store.dispatch('IS_VALIDATION_TOKEN')
+                    .then((token) => {
+                        if (token) {
+                            const msg = {
+                                token: token,
+                                nickname: this.getUserData.nickname,
+                                roomSeq: roomSeq,
+                                message: `${this.getUserData.nickname}님이 입장하셨습니다.`,
+                            };
+                            this.$join(msg);
+                            this.$emit('openRoom', roomSeq);
+                        }
+                    });
             }
+        },
+        created() {
         }
     }
 </script>

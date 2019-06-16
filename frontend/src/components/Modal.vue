@@ -21,7 +21,7 @@
             Login
         },
         created() {
-            EventBus.$on('openModal', command => {
+            EventBus.$on('openModal', (command) => {
                 this.currentView = command;
             });
             EventBus.$on('closeModal', () => {

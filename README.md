@@ -28,6 +28,7 @@
    3. [회원가입/인증/로그아웃 - nodeMailer, JWT, Redis, MySQL, Vuex](https://1ilsang.blog.me/221556402323)
    4. [게시글 CRUD - 무한스크롤, 이미지 리사이징, GCP: Storage, Cloud function](https://1ilsang.blog.me/221558340615)
    5. [Plugin 설정과 Vuex 모듈화, 단순 Socket 채팅방 구현](https://1ilsang.blog.me/221560032593)
+   6. [채팅 소켓 로드벨런싱 - HAProxy, Docker, Redis-pubsub, ShellScript](http://1ilsang.blog.me/221563459499)
    <br>
    개발중 ...
 
@@ -43,7 +44,7 @@
        <img src=".readmedoc/img/cmd1.png" width="500" alt="cmd1 png" />
        <img src=".readmedoc/img/cmd2.png" width="500" alt="cmd2 png" />
        <img src=".readmedoc/img/cmd3.png" width="500" alt="cmd3 png" />
-   - 또한 frontend / backend 디렉토리별 package.json 에 별도의 실행 스크립트가 있습니다.
+   - frontend / backend 디렉토리별 package.json 에 별도의 실행 스크립트가 있습니다.
 
 
 License

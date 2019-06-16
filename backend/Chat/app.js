@@ -1,13 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var chatRouter = require('./routes/chat');
+const app = express();
+app.io = require('socket.io')();
+app.io.use((socket, next) => {
+    let handshake = socket.handshake;
+    // console.log(socket.data);
+    // console.log(handshake);
+    next();
+});
 
-var app = express();
+const indexRouter = require('./routes/index');
+const chatRouter = require('./routes/chat')(app.io);
 
 app.use(logger('dev'));
 app.use(express.json());

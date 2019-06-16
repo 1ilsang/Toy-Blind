@@ -1,4 +1,13 @@
-import {DELETE_POST, GET_POST, GET_POST_LIST, LOGIN, LOGOUT, UPDATE_POST, WRITE_POST} from "./const/mutation-type";
+import {
+    DELETE_POST,
+    GET_POST,
+    GET_POST_LIST,
+    IS_VALIDATION_TOKEN,
+    LOGIN,
+    LOGOUT,
+    UPDATE_POST,
+    WRITE_POST
+} from "./const/mutation-type";
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
@@ -24,13 +33,12 @@ export default new Vuex.Store({
     },
     mutations: {
         [LOGIN](state, {data}) {
-            state.userData = data;
+            state.userData = data.userData;
             localStorage.accessToken = data.accessToken;
             localStorage.setItem('userData', JSON.stringify(data.userData));
         },
         [LOGOUT](state) {
             state.userData = '';
-            state.accessToken = '';
             axios.defaults.headers.common['Authorization'] = undefined;
             logout();
         }
@@ -44,7 +52,6 @@ export default new Vuex.Store({
                 .then(() => {
                     EventBus.$emit('closeHamburgerMenu');
                     EventBus.$emit('closeModal');
-                    // router.push('/');
                 })
                 .catch(e => {
                     if (e.response) return e.response.data;
@@ -85,6 +92,15 @@ export default new Vuex.Store({
             return axios.put(`${server.BoardServer}/board/${data.boardSeq}`, data)
                 .then(() => true)
                 .catch(() => false);
+        },
+        [IS_VALIDATION_TOKEN]({commit}) {
+            return axios.get(`${server.AuthServer}/auth/token-check`)
+                .then(({data}) => data.token)
+                .catch(() => {
+                    commit('LOGOUT');
+                    router.push('/login');
+                    return false;
+                });
         }
     }
 });
