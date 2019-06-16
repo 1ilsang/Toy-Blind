@@ -2,10 +2,11 @@
 
 ### 0. 목표
    - 블라인드 앱을 모방해 보자.
+   - ![Sample image](./.readmedoc/img/sample.webm)
 	
 ### 1. 기술스택
    - Main: `Vue, Vuex, Node.js, MySQL, Redis: Pub/Sub, JWT`
-   - Module: `Express, Helmet, Bcrypt, multer, axios`
+   - Module: `Express, Helmet, Bcrypt, Multer, Axios, NodeMailer, Socket.io`
    - Infra: `Linux, Docker, GCP: VM, Storage, Cloud Function(Img Resizing)`
 
 ### 2. 기능
@@ -25,7 +26,7 @@
 ### 4. 개발과정
    1. [초반설계 및 Bash 쉘 스크립팅](https://1ilsang.blog.me/221549601659)
    2. [Vue 프론트 따라 만들기](https://1ilsang.blog.me/221552922387)
-   3. [회원가입/인증/로그아웃 - nodeMailer, JWT, Redis, MySQL, Vuex](https://1ilsang.blog.me/221556402323)
+   3. [회원가입(메일인증) / 인증(JWT) / 로그아웃 - NodeMailer, JWT, Redis, Bcrypt, MySQL, Vuex](https://1ilsang.blog.me/221556402323)
    4. [게시글 CRUD - 무한스크롤, 이미지 리사이징, GCP: Storage, Cloud function](https://1ilsang.blog.me/221558340615)
    5. [Plugin 설정과 Vuex 모듈화, 단순 Socket 채팅방 구현](https://1ilsang.blog.me/221560032593)
    6. [채팅 소켓 로드벨런싱 - HAProxy, Docker, Redis-pubsub, ShellScript](http://1ilsang.blog.me/221563459499)
