@@ -2,7 +2,7 @@
 
 ### 0. 목표
    - 블라인드 앱을 모방해 보자.
-   - ![Sample image](.readmedoc/img/sample.webm)
+   - ![Sample image](.readmedoc/img/sample.gif)
 	
 ### 1. 기술스택
    - Main: `Vue, Vuex, Node.js, MySQL, Redis: Pub/Sub, JWT`
