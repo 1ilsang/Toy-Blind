@@ -54,7 +54,6 @@
                                 <span><span slot="reference"><a><span
                                         class="name">{{post.nickname}}</span></a></span></span>
                             </div>
-
                         </div>
                         <div class="tit_info">
                             <span :title="post.u_created"
@@ -86,259 +85,11 @@
                 </div>
                 <div class="topic_comments">
                     <h2 class="blind">{{post.comments}}</h2>
-                    <WriteComment></WriteComment>
-                    <div class="topic_comments_wrap">
-                        <div class="sec_fnc seo">
-                        <span class="select">
-                            <span>
-                                <span style="display: none;">
-                                    <span class="popper">
-                                        <div class="more_menu menu_basic">
-                                            <ol>
-                                                <li><a class="selected"><span class="item">TOP</span></a></li>
-                                                <li><a class=""><span class="item">RECENT</span></a></li>
-                                                <li><a class=""><span class="item">OLD</span></a></li>
-                                            </ol>
-                                        </div>
-                                    </span>
-                                </span>
-                                <span><a><i>TOP</i></a></span>
-                            </span>
-                        </span>
-                            <span class="comment">13 Comments</span>
-                        </div> <!---->
-                        <ul>
-                            <li id="5153776" tabindex="0" class="comment_area word-break">
-                                <div class="content">
-                                    <div class="writer">
-                                        <div><span>Finisar</span> <!----> <span><span><span
-                                                style="display: none;"> <span
-                                                class="popper"><div class="pop_profile"><strong
-                                                class="user">abc_xyz_1</strong> <p class="writer"><span
-                                                class="name">Finisar</span> <!----></p> <dl class="pre"><dt>PRE</dt> <dd>Intel Corporation, Apple, NVIDIA, Qualcomm, Broadcom Inc., Xilinx, NXP Semiconductor, AMD, Western Digital</dd></dl>
-                                            <!----> <button
-                                                    class="send"><span>SEND PRIVATE MESSAGE</span></button></div></span></span> <span><a
-                                                onclick="ga('send', 'event', 'DM', 'Nickname+', '');"><span
-                                                class="name">abc_xyz_1</span>
-                                        </a></span></span></span>
-                                        </div> <!----></div>
-                                    <div class="detail"><span>Yes</span> <!----></div>
-                                    <div class="info"><span class="date">Apr 29</span> <a class="like">1</a> <a
-                                            class="comment">1</a> <!----></div>
-                                </div>
-                                <div class="reply"><!---->
-                                    <ul>
-                                        <li id="5153792" tabindex="0" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            New
-                                                        <!----></span> <!----> <span><span slot="reference"><a><span
-                                                            class="name">h1Trauma</span></a></span></span></div>
-                                                    <i class="op">OP</i></div>
-                                                <div class="detail">
-                                                    <span>What law firm? Did they say any cut off date?</span> <!---->
-                                                </div>
-                                                <div class="info"><span class="date">Apr 29</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li id="5158955" tabindex="1" class="comment_area word-break">
-                                <div class="content">
-                                    <div class="writer">
-                                        <div><span>
-            EA
-                                            <!----></span> <!----> <span><span slot="reference"><a><span
-                                                class="name">mdyson</span></a></span></span></div> <!----></div>
-                                    <div class="detail"><span>Yes still waiting. Lost all hopes though</span> <!---->
-                                    </div>
-                                    <div class="info"><span class="date">Apr 29</span> <a class="like">1</a> <a
-                                            class="comment">0</a> <!----></div>
-                                </div>
-                                <div class="reply" style="display: none;"><!---->
-                                    <ul></ul>
-                                </div>
-                            </li>
-                            <li id="5276900" tabindex="2" class="comment_area word-break">
-                                <div class="content">
-                                    <div class="writer">
-                                        <div><span>
-            Finisar
-                                            <!----></span> <!----> <span><span><span style="display: none;"> <span
-                                                class="popper"><div class="pop_profile"><strong
-                                                class="user">abc_xyz_1</strong> <p class="writer"><span
-                                                class="name">Finisar</span> <!----></p> <dl class="pre"><dt>PRE</dt> <dd>Intel Corporation, Apple, NVIDIA, Qualcomm, Broadcom Inc., Xilinx, NXP Semiconductor, AMD, Western Digital</dd></dl>
-                                            <!----> <button
-                                                    class="send"><span>SEND PRIVATE MESSAGE</span></button></div></span></span> <span><a
-                                                onclick="ga('send', 'event', 'DM', 'Nickname+', '');"><span
-                                                class="name">abc_xyz_1</span><em
-                                                class="ico ico_circle_more"><i
-                                                class="blind">more</i></em></a></span></span></span>
-                                        </div> <!----></div>
-                                    <div class="detail"><span>Still waiting. Emailed attorney, template response. I’ve seen some posts yesterday with CA/PP/AD.<br><br>Not sure if we can still hope.</span>
-                                        <!----></div>
-                                    <div class="info"><span class="date">May 15</span> <a class="like">0</a> <a
-                                            class="comment">5</a> <!----></div>
-                                </div>
-                                <div class="reply"><!---->
-                                    <ul>
-                                        <li id="5277079" tabindex="0" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            New
-                                                        <!----></span> <!----> <span><span slot="reference"><a><span
-                                                            class="name">h1Trauma</span></a></span></span></div>
-                                                    <i class="op">OP</i></div>
-                                                <div class="detail"><span>What law firm?</span> <!----></div>
-                                                <div class="info"><span class="date">May 15</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                        <li id="5277420" tabindex="1" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            Finisar
-                                                        <!----></span> <!----> <span><span><span
-                                                            style="display: none;"> <span class="popper"><div
-                                                            class="pop_profile"><strong class="user">abc_xyz_1</strong> <p
-                                                            class="writer"><span class="name">Finisar</span> <!----></p> <dl
-                                                            class="pre"><dt>PRE</dt> <dd>Intel Corporation, Apple, NVIDIA, Qualcomm, Broadcom Inc., Xilinx, NXP Semiconductor, AMD, Western Digital</dd></dl>
-                                                        <!----> <button
-                                                                class="send"><span>SEND PRIVATE MESSAGE</span></button></div></span></span> <span><a
-                                                            onclick="ga('send', 'event', 'DM', 'Nickname+', '');"><span
-                                                            class="name">abc_xyz_1</span><em
-                                                            class="ico ico_circle_more"><i
-                                                            class="blind">more</i></em></a></span></span></span></div>
-                                                    <!----></div>
-                                                <div class="detail"><span>E&amp;M Mayock</span> <!----></div>
-                                                <div class="info"><span class="date">May 15</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                        <li id="5277512" tabindex="2" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            New
-                                                        <!----></span> <!----> <span><span slot="reference"><a><span
-                                                            class="name">h1Trauma</span></a></span></span></div>
-                                                    <i class="op">OP</i></div>
-                                                <div class="detail"><span>I saw only one post in immigrationgirl about AD/PP receiving receipt. How many did you see and where?</span>
-                                                    <!----></div>
-                                                <div class="info"><span class="date">May 15</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                        <li id="5277573" tabindex="3" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            Finisar
-                                                        <!----></span> <!----> <span><span><span
-                                                            style="display: none;"> <span class="popper"><div
-                                                            class="pop_profile"><strong class="user">abc_xyz_1</strong> <p
-                                                            class="writer"><span class="name">Finisar</span> <!----></p> <dl
-                                                            class="pre"><dt>PRE</dt> <dd>Intel Corporation, Apple, NVIDIA, Qualcomm, Broadcom Inc., Xilinx, NXP Semiconductor, AMD, Western Digital</dd></dl>
-                                                        <!----> <button
-                                                                class="send"><span>SEND PRIVATE MESSAGE</span></button></div></span></span> <span><a
-                                                            onclick="ga('send', 'event', 'DM', 'Nickname+', '');"><span
-                                                            class="name">abc_xyz_1</span><em
-                                                            class="ico ico_circle_more"><i
-                                                            class="blind">more</i></em></a></span></span></span></div>
-                                                    <!----></div>
-                                                <div class="detail"><span>Check out the FB group, there is a fb group “F1 Visa, OPT, STEM OPT, H1B Visa &amp; H4 Visa”.<br><br>Which law firm is yours .?</span>
-                                                    <!----></div>
-                                                <div class="info"><span class="date">May 15</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                        <li id="5277699" tabindex="4" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            New
-                                                        <!----></span> <!----> <span><span slot="reference"><a><span
-                                                            class="name">h1Trauma</span></a></span></span></div>
-                                                    <i class="op">OP</i></div>
-                                                <div class="detail"><span>BAL global</span> <!----></div>
-                                                <div class="info"><span class="date">May 15</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li id="5204875" tabindex="3" class="comment_area word-break">
-                                <div class="content">
-                                    <div class="writer">
-                                        <div><span>
-            New
-                                            <!----></span> <!----> <span><span slot="reference"><a><span
-                                                class="name">nmdQ05</span></a></span></span></div> <!----></div>
-                                    <div class="detail">
-                                        <span>Still waiting AD/PP/VT. 3rd attempt and lost all hopes.<br>Thinking of moving back to India</span>
-                                        <!----></div>
-                                    <div class="info"><span class="date">May 5</span> <a class="like">0</a> <a
-                                            class="comment">1</a> <!----></div>
-                                </div>
-                                <div class="reply"><!---->
-                                    <ul>
-                                        <li id="5205558" tabindex="0" class="comment_area word-break">
-                                            <div class="content">
-                                                <div class="writer">
-                                                    <div><span>
-            Twitter
-                                                        <!----></span> <!----> <span><span slot="reference"><a><span
-                                                            class="name">rqgf61</span></a></span></span></div> <!---->
-                                                </div>
-                                                <div class="detail"><span>Where do you work? Can your employer move you to nearby countries?</span>
-                                                    <!----></div>
-                                                <div class="info"><span class="date">May 5</span> <a class="like">0</a>
-                                                    <!----></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li id="5276605" tabindex="4" class="comment_area word-break">
-                                <div class="content">
-                                    <div class="writer">
-                                        <div><span>
-            New
-                                            <!----></span> <!----> <span><span slot="reference"><a><span class="name">h1Trauma</span></a></span></span>
-                                        </div>
-                                        <i class="op">OP</i></div>
-                                    <div class="detail"><span>Any updates?</span> <!----></div>
-                                    <div class="info"><span class="date">May 15</span> <a class="like">0</a> <a
-                                            class="comment">0</a> <!----></div>
-                                </div>
-                                <div class="reply" style="display: none;"><!---->
-                                    <ul></ul>
-                                </div>
-                            </li>
-                            <li id="5154317" tabindex="5" class="comment_area word-break">
-                                <div class="content">
-                                    <div class="writer">
-                                        <div><span>Sony/ </span> <span>Data</span> <span><span slot="reference"><a><span
-                                                class="name">YLdJ18</span></a></span></span></div> <!----></div>
-                                    <div class="detail"><span>Yes but really losing hope that it might come. Looks like ppl who got picked in AD/PP already received receipt updates.<br>Fragoman</span>
-                                        <!----></div>
-                                    <div class="info"><span class="date">Apr 29</span> <a class="like">0</a> <a
-                                            class="comment">0</a> <!----></div>
-                                </div>
-                                <div class="reply" style="display: none;">
-                                    <ul></ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <LoginPop v-if="!Boolean(getUserData.nickname)"></LoginPop>
+                    <ListCardComments v-on:deleteComment="deleteComment" :boardSeq="boardSeq" :comments="comments" :totalCommentsCnt="this.post.comments"></ListCardComments>
                     <div v-if="isEnd" class="end">End of contents :)</div>
                 </div>
+                <WriteComment v-on:updateComments="updateComments" :boardSeq="boardSeq" v-if="Boolean(getUserData.nickname)"></WriteComment>
             </section>
         </div>
     </div>
@@ -347,11 +98,13 @@
 <script>
     import {mapGetters} from "vuex";
     import {dateFilters} from "../../mixins/dateUtils";
+    import LoginPop from "./comment/LoginPop";
+    import ListCardComments from "./comment/ListCardComments";
     import WriteComment from "./comment/WriteComment";
 
     export default {
         name: 'ListCardDetail',
-        components: {WriteComment},
+        components: {WriteComment, ListCardComments, LoginPop},
         mixins: [dateFilters],
         computed: {
             ...mapGetters([
@@ -362,10 +115,12 @@
             return {
                 post: {},
                 boardSeq: '',
+                commentSeq: 0,
                 modifyMode: false,
                 modifyTitle: '',
                 modifyDescription: '',
-                isEnd: true
+                isEnd: false,
+                comments: []
             }
         },
         methods: {
@@ -375,9 +130,6 @@
                 const boardSeq = this.boardSeq = url[url.length - 1];
                 this.$store.dispatch('GET_POST', boardSeq)
                     .then((res) => this.post = res);
-            },
-            getComments() {
-
             },
             deletePost() {
                 if (!confirm('정말로 삭제하시겠습니까?')) return;
@@ -404,11 +156,47 @@
             },
             closeModify() {
                 this.modifyMode = false;
+            },
+            updateComments(value) {
+                if(value) {
+                    this.comments = [];
+                    this.isEnd = value.isEnd;
+                    this.commentSeq = 0;
+                }
+                if(this.isEnd) return;
+                let data = {
+                    'boardSeq': this.boardSeq,
+                    'commentSeq': this.commentSeq,
+                    'userSeq': this.getUserData.seq
+                };
+                this.$store.dispatch('GET_COMMENT_LIST', data)
+                    .then((data) => {
+                        this.comments.push(...data);
+                        if(data.length < 5) {
+                            this.isEnd = true;
+                            return;
+                        }
+                        this.commentSeq = data[data.length - 1].seq;
+                    });
+            },
+            deleteComment(seq) {
+                this.comments = this.comments.map(e => {
+                    if(e.seq === seq) e.deleted = 1;
+                    return e;
+                });
+            },
+            scroll() {
+                window.onscroll = () => {
+                    let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+                    if (bottomOfWindow) this.updateComments();
+                }
             }
         },
         created() {
+            document.documentElement.scrollTop = 0;
             this.getDetail();
-            this.getComments();
+            this.updateComments();
+            this.scroll();
         }
     }
 </script>
@@ -692,7 +480,7 @@
     }
 
     .topic_comments {
-        border-top: 10px solid #eceef3;
+        border-top: 3px solid #eceef3;
         background: #fff;
     }
 
@@ -700,7 +488,7 @@
         background: #eceef3;
         position: relative;
         margin-top: 0;
-        padding-top: 10px;
+        padding-top: 5px;
         border-bottom: 1px solid #dfe1e4;
     }
 

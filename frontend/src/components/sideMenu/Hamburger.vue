@@ -170,6 +170,7 @@
         color: #fff;
         font-size: 14px;
         font-weight: 400;
+        padding:  5px;
         background-color: #da3238;
         text-decoration: none;
         vertical-align: top;

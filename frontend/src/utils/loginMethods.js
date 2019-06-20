@@ -1,5 +1,6 @@
 import {EventBus} from "./event-bus";
 import axios from "axios";
+import router from '../router';
 
 export const isLogin = () => {
     return JSON.parse(localStorage.getItem('userData'));

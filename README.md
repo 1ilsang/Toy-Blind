@@ -2,7 +2,7 @@
 
 ### 0. 목표
    - 블라인드 앱을 모방해 보자.
-   - ![Sample image](.readmedoc/img/sample.gif)
+   - <img src=".readmedoc/img/sample.gif" width="300" alt="Sample image" />
 	
 ### 1. 기술스택
    - Main: `Vue, Vuex, Node.js, MySQL, Redis: Pub/Sub, JWT`
@@ -30,6 +30,7 @@
    4. [게시글 CRUD - 무한스크롤, 이미지 리사이징, GCP: Storage, Cloud function](https://1ilsang.blog.me/221558340615)
    5. [Plugin 설정과 Vuex 모듈화, 단순 Socket 채팅방 구현](https://1ilsang.blog.me/221560032593)
    6. [채팅 소켓 로드벨런싱 - HAProxy, Docker, Redis-pubsub, ShellScript](http://1ilsang.blog.me/221563459499)
+   7. [댓글 구현 및 문제점과 의문](http://1ilsang.blog.me/221566493707)
    <br>
    개발중 ...
 

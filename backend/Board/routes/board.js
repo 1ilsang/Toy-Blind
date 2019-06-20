@@ -73,10 +73,10 @@ router.post('/list/:topic', (req, res, next) => {
     if (boardSeq !== 0) IN_SQL = ` AND b.seq <= ${boardSeq}`;
 
     const SQL = `
-                SELECT          b.*, u.nickname, u.company, count(bhc.seq) AS comments, count(ulb.seq) AS likes
+                SELECT          b.*, u.nickname, u.company, count(cmt.seq) AS comments, count(ulb.seq) AS likes
                 FROM            board AS b
                 INNER JOIN      user AS u ON u.seq = b.user_seq
-                LEFT OUTER JOIN board_has_comment AS bhc ON b.seq = bhc.board_seq
+                LEFT OUTER JOIN comments AS cmt ON b.seq = cmt.board_seq
                 LEFT OUTER JOIN user_like_board AS ulb ON b.seq = ulb.board_seq
                 WHERE           b.topic  = ${topic}
                     ${IN_SQL}
@@ -96,10 +96,10 @@ router.post('/article/view', (req, res, next) => {
     const boardSeq = Number(req.body.boardSeq);
 
     const SQL = `
-                SELECT          b.*, u.nickname, u.company, count(bhc.seq) AS comments, count(ulb.seq) AS likes
+                SELECT          b.*, u.nickname, u.company, count(cmt.seq) AS comments, count(ulb.seq) AS likes
                 FROM            board AS b
                 INNER JOIN      user AS u ON u.seq = b.user_seq
-                LEFT OUTER JOIN board_has_comment AS bhc ON b.seq = bhc.board_seq
+                LEFT OUTER JOIN comments AS cmt ON b.seq = cmt.board_seq
                 LEFT OUTER JOIN user_like_board AS ulb ON b.seq = ulb.board_seq
                 WHERE           b.seq = ${boardSeq}
                 GROUP BY        b.seq

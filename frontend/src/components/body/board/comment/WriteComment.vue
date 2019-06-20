@@ -1,73 +1,83 @@
 <template>
-    <div class="write_area">
-        <div class="btn_add_comment" v-if="!getUserData">
-            Want to comment?
-            <a @click="openModal('Login')"><strong class="point">LOG IN</strong></a>
-            or
-            <a @click="openModal('SignUp')"><strong class="point">SIGN UP</strong></a>
-        </div>
-        <div v-else>
-            Comment write area
-        </div>
+    <div class="comment_write" v-else>
+        <div class="write_btn"></div>
+        <label>
+            <button @click="submitComment">전송</button>
+            <input @keyup.13="submitComment" type="text" v-model="description" placeholder="댓글을 입력해 주세요.">
+        </label>
     </div>
 </template>
 
 <script>
-    import {EventBus} from "../../../../utils/event-bus";
     import {mapGetters} from "vuex";
+    import {EventBus} from "../../../../utils/event-bus";
 
     export default {
         name: 'WriteComment',
+        props: ['boardSeq'],
         computed: {
             ...mapGetters([
                 'getUserData'
             ])
         },
+        data() {
+            return {
+                description: ''
+            }
+        },
         methods: {
-            openModal(target) {
-                EventBus.$emit('openModal', target);
+            submitComment() {
+                if(this.description.trim() === '') return false;
+
+                const self = this;
+                let data = {
+                    'user_seq': this.getUserData.seq,
+                    'board_seq': this.boardSeq,
+                    'description': this.description,
+                    'parent': null
+                };
+
+                this.$store.dispatch('WRITE_COMMENT', data)
+                    .then(res => res ? self.init() : EventBus.$emit('openModal', 'ErrorModal'));
+            },
+            init() {
+                this.description = '';
+                this.$emit('updateComments', {'isEnd':false, 'commentSeq':0});
             }
         }
     }
 </script>
 
 <style>
-
-    .topic_comments div.btn_add_comment {
-        cursor: default;
+    .comment_write {
+        border: 1px solid #da3228;
+        background-color: white;
+        position: sticky;
+        bottom: 0;
     }
 
-    .topic_comments .btn_add_comment {
-        display: block;
-        padding-left: 30px;
-        border-bottom: 1px solid #dfe1e4;
-        background: #fff;
-        font-size: 14px;
-        font-weight: 400;
-        height: 68px;
-        box-sizing: border-box;
-        padding-top: 26px;
-        cursor: pointer;
+    .comment_write .write_btn {
+        width: 10px;
+        height: 50px;
+        background-color: #da3238;
+        opacity: 0.2;
+        float: right;
     }
 
-    .topic_comments .btn_add_comment:before {
-        content: "";
-        display: inline-block;
-        width: 22px;
-        height: 17px;
-        vertical-align: middle;
-        margin-right: 14px;
-        background: url(https://d2u3dcdbebyaiu.cloudfront.net/img/www/sp-set.png?20180406=) no-repeat;
-        background-size: 325px 420px;
-        background-position: -159px -143px;
-        margin-top: -3px;
+    .comment_write input[type='text'] {
+        width: 70%;
+        margin-left: 10px;
+        line-height: 50px;
     }
 
-    .topic_comments div.btn_add_comment a {
-        cursor: pointer;
+    .comment_write button {
+        float: left;
+        color: white;
+        background-color: #da3238;
+        font-weight: bold;
+        width: 50px;
+        height: 50px;
+        border: 0;
     }
 
-    .point {
-        color: #da3238;
-    }
 </style>

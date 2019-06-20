@@ -8,6 +8,7 @@
     import {EventBus} from "../utils/event-bus";
     import SignUp from "./modal/SignUp";
     import Login from './modal/Login';
+    import ErrorModal from './modal/ErrorModal';
 
     export default {
         name: 'Wrap',
@@ -18,7 +19,8 @@
         },
         components: {
             SignUp,
-            Login
+            Login,
+            ErrorModal
         },
         created() {
             EventBus.$on('openModal', (command) => {

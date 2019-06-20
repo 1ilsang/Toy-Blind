@@ -67,7 +67,10 @@
                 this.$store.dispatch('GET_POST_LIST', {topic, boardSeq})
                     .then((res) => {
                         this.postList.push(...res);
-                        if (res.length < 5) this.boardSeq = 0;
+                        if (res.length < 5) {
+                            this.boardSeq = 0;
+                            this.isEnd = true;
+                        }
                         else this.boardSeq = res[res.length - 1].seq - 1;
                     });
             },
@@ -91,10 +94,8 @@
                 }
             }
         },
-        mounted() {
-            this.scroll();
-        },
         created() {
+            this.scroll();
             this.fetchData();
         }
     }

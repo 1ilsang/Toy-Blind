@@ -27,13 +27,9 @@
             MessageForm,
         },
         computed: {
-            ...mapState({
-                'msgDatas': state => {
-                    return state.socket.msgDatas;
-                }
-            }),
             ...mapGetters([
-                'getUserData'
+                'getUserData',
+                'msgDatas'
             ])
         },
         methods: {

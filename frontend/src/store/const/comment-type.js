@@ -1,0 +1,4 @@
+export const WRITE_COMMENT = 'WRITE_COMMENT';
+export const GET_COMMENT_LIST = 'GET_COMMENT_LIST';
+export const GET_COMMENT = 'GET_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';

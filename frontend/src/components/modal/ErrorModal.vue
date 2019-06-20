@@ -1,10 +1,11 @@
 <template>
+    <!-- FIXME Error 으로 변경 -->
     <div aria-expanded="true" data-modal="login" class="v--modal-overlay scrollable">
         <div class="v--modal-top-right"></div>
         <div class="v--modal-box v--modal v--size-s">
             <div class="flex">
-                <div class="ly_signup"><h1 class="blind">Log In</h1>
-                    <div class="top_area"><h2 class="tit">Log In</h2> <a class="btn_clse" @click="closeModal()"><i
+                <div class="ly_signup"><h1 class="blind">Error Modal</h1>
+                    <div class="top_area"><h2 class="tit">Error Modal</h2> <a class="btn_clse" @click="closeModal()"><i
                             class="blind">close</i></a>
                     </div>
                     <div class="contents">
@@ -12,27 +13,26 @@
                             <ul class="loginform">
                                 <li>
                                     <div class="input_wrap"><input type="text" placeholder="Enter your work email."
-                                                                   v-model="email">
+                                                                  >
                                     </div>
                                 </li>
                                 <li>
                                     <div class="input_wrap"><input type="password" placeholder="Password"
-                                                                   v-model="password" @keyup.13="login"></div>
+                                                                   ></div>
                                 </li>
                             </ul>
                             <div class="fieldsubmit">
-                                <button type="button" class="submit disabled" @click="login"><strong>Log in</strong>
+                                <button type="button" class="submit disabled" ><strong>Log in</strong>
                                 </button> <!---->
                             </div>
-                            <span class="msg alert" v-if="message !== ''">
-                                {{message}}
+                            <span class="msg alert" >
                             </span>
                             <div class="or"><span>or</span></div>
                             <div class="fieldsubmit security">
                                 <button type="button" class="submit"><strong>Log in with security code</strong></button>
                             </div>
                         </div>
-                        <div class="motive">New to Blind? <span class="login_link" @click="openModal('SignUp')">SIGN UP</span></div>
+                        <div class="motive">New to Blind? <span class="login_link">SIGN UP</span></div>
                     </div>
                 </div>
             </div>
@@ -41,32 +41,11 @@
 </template>
 
 <script>
-    import {modalMethods} from '../mixins/modalMethods';
+    import {modalMethods} from "../mixins/modalMethods";
 
     export default {
-        name: 'Login',
-        mixins: [modalMethods],
-        data() {
-            return {
-                email: '',
-                password: '',
-                message: ''
-            }
-        },
-        methods: {
-            login() {
-                if (this.email.trim() === '' || this.password.trim() === '') {
-                    alert('ERR: Please check your input.');
-                    return;
-                }
-                let email = this.email;
-                let password = this.password;
-                this.$store.dispatch('LOGIN', {email, password})
-                    .then(e => this.message = e);
-            }
-        },
-        created() {
-        }
+        name: 'ErrorModal',
+        mixins: [modalMethods]
     }
 </script>
 

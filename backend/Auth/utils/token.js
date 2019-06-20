@@ -29,6 +29,16 @@ exports.check = (req, res, next) => {
     });
 };
 
+exports.getData = (req, res, next) => {
+    jwt.verify(req.token, jwtConfig.secret, (err, authorizedData) => {
+        if(err) res.status(403).send(MESSAGE.validationError);
+        else {
+            req.tokenData = authorizedData;
+            next();
+        }
+    });
+};
+
 exports.verifyCheck = (token) => {
     return jwt.verify(token, jwtConfig.secret, (err, authorizedData) => {
         if (err) return false;
