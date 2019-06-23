@@ -86,6 +86,31 @@ router.post('/list/:topic', (req, res, next) => {
                 LIMIT           ${limitValue}
         `;
 
+    const SQL_ = `
+        select  * 
+        from (
+            select *, rank() over(partition by parent order by seq desc) as rnk  
+            from comments 
+            where parent IN (
+                select seq from (
+                    select seq 
+                    from comments 
+                    where board_seq=19 
+                        and isnull(parent) 
+                    order by seq desc 
+                    limit 3
+                    ) as tmp
+                )
+            ) as tmp2
+        where rnk < 5 
+        union (
+            select *, rank() over(partition by parent order by seq desc) 
+            from comments
+            where board_seq=19 and isnull(parent)
+            order by seq desc  
+            limit 3
+        );
+    `;
     mysqlPool.query(SQL, (err, reply) => {
         if (err) res.status(400).send(MESSAGE.validationError);
         else res.status(200).send(reply);

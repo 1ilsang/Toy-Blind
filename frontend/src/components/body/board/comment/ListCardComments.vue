@@ -38,7 +38,7 @@
                             <span class="name">{{item.nickname}}</span>
                         </div>
                     </div>
-                    <span class="delete_btn" v-if="item.user_seq === getUserData.seq" @click="deleteComment(item.seq)">Delete</span>
+                    <span class="delete_btn2" v-if="item.user_seq === getUserData.seq" @click="deleteComment(item.seq)">Delete</span>
                     <div class="detail">{{item.description}}</div>
                     <div class="info">
                         <span class="date">{{item.created | convertDateToMonthDay }}</span>
@@ -48,11 +48,11 @@
                 </div>
                 <div class="reply" v-if="item.reply">
                     <ul>
-                        <!-- TODO View more + -->
-                        <li v-for="(e, idx) in item" :key="idx" class="comment_area word-break">
+                        <div v-if="!isReplyEnd && item.reply.length > 4" class="reply-comments-more" @click="viewMoreReply(item)"> + VIEW MORE</div>
+                        <li v-for="(e, idx) in item.reply" :key="idx" class="comment_area word-break">
                             <div class="content">
                                 <div class="writer">
-                                    <div>
+                                    <div v-if="e.deleted === 0">
                                         <span>{{e.company}}</span>
                                         <span class="name">{{e.nickname}}</span>
                                     </div>
@@ -62,75 +62,14 @@
                                     <span>{{e.description}}</span>
                                 </div>
                                 <div class="info">
-                                    <span class="date">{{e.created | convertDateToMonthDay }}</span><a class="like">{{e.likes}}</a>
+                                    <span class="date">{{e.created | convertDateToMonthDay }}</span>
+                                    <a class="like" v-if="e.deleted === 0">{{e.likes}}</a>
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </li>
-            <!--<li id="5153776" tabindex="0" class="comment_area word-break">-->
-                <!--<div class="content">-->
-                    <!--<div class="writer">-->
-                        <!--<div>-->
-                            <!--<span>Finisar</span>-->
-                            <!--<span class="name">abc_xyz_1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="detail"><span>Yes</span> &lt;!&ndash;&ndash;&gt;</div>-->
-                    <!--<div class="info">-->
-                        <!--<span class="date">Apr 29</span>-->
-                        <!--<a class="like">1</a>-->
-                        <!--<a class="comment">1</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="reply">&lt;!&ndash;&ndash;&gt;-->
-                    <!--<ul>-->
-                        <!--<li id="5153792" tabindex="0" class="comment_area word-break">-->
-                            <!--<div class="content">-->
-                                <!--<div class="writer">-->
-                                    <!--<div>-->
-                                        <!--<span>New</span>-->
-                                        <!--<span class="name">h1Trauma</span>-->
-                                    <!--</div>-->
-                                    <!--<i class="op">OP</i>-->
-                                <!--</div>-->
-                                <!--<div class="detail">-->
-                                    <!--<span>What law firm? Did they say any cut off date?</span>-->
-                                <!--</div>-->
-                                <!--<div class="info">-->
-                                    <!--<span class="date">Apr 29</span> <a class="like">0</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</li>-->
-            <!--<li id="5158955" tabindex="1" class="comment_area word-break">-->
-                <!--<div class="content">-->
-                    <!--<div class="writer">-->
-                        <!--<div>-->
-                            <!--<span>EA</span>-->
-                            <!--<span>-->
-                                <!--<span slot="reference">-->
-                                    <!--<a><span class="name">mdyson</span></a>-->
-                                <!--</span>-->
-                            <!--</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="detail">-->
-                        <!--<span>Yes still waiting. Lost all hopes though</span>-->
-                    <!--</div>-->
-                    <!--<div class="info">-->
-                        <!--<span class="date">Apr 29</span>-->
-                        <!--<a class="like">1</a>-->
-                        <!--<a class="comment">0</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="reply" style="display: none;">-->
-                    <!--<ul></ul>-->
-                <!--</div>-->
-            <!--</li>-->
         </ul>
     </div>
 </template>
@@ -149,22 +88,33 @@
             ])
         },
         data() {
-            return {}
+            return {
+                isReplyEnd: false
+            }
         },
         methods: {
             deleteComment(seq) {
                 this.$store.dispatch('DELETE_COMMENT', seq)
                     .then(() => this.$emit('deleteComment', seq));
+            },
+            viewMoreReply(item) {
+                let data = {
+                    boardSeq: item.board_seq,
+                    commentSeq: item.seq,
+                    lastReplySeq: item.reply[0].seq
+                };
+                this.$store.dispatch('GET_MORE_COMMENTS', data)
+                    .then(res => {
+                        if(res.length > 0) this.$emit('updateReplyComments', res)
+                        else this.isReplyEnd = true;
+                    });
             }
-        },
-        created() {
-
         }
     }
 </script>
 
 <style>
-    .delete_btn {
+    .delete_btn2 {
         margin-top: 20px;
         margin-right: 0;
         font-size: 0.5em;
@@ -174,5 +124,15 @@
         background-size: 325px 420px;
         background-position: -215px -80px;
         background-color: navajowhite;
+    }
+    .reply-comments-more {
+        border: none;
+        background-color: #eceef3;
+        color: black;
+        text-align: center;
+        height: 30px;
+        padding-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 </style>

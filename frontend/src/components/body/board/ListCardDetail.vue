@@ -86,7 +86,13 @@
                 <div class="topic_comments">
                     <h2 class="blind">{{post.comments}}</h2>
                     <LoginPop v-if="!Boolean(getUserData.nickname)"></LoginPop>
-                    <ListCardComments v-on:deleteComment="deleteComment" :boardSeq="boardSeq" :comments="comments" :totalCommentsCnt="this.post.comments"></ListCardComments>
+                    <ListCardComments
+                            v-on:deleteComment="deleteComment"
+                            :boardSeq="boardSeq"
+                            :comments="comments"
+                            :totalCommentsCnt="this.post.comments"
+                            v-on:updateReplyComments="updateReplyComments"
+                    ></ListCardComments>
                     <div v-if="isEnd" class="end">End of contents :)</div>
                 </div>
                 <WriteComment v-on:updateComments="updateComments" :boardSeq="boardSeq" v-if="Boolean(getUserData.nickname)"></WriteComment>
@@ -166,8 +172,7 @@
                 if(this.isEnd) return;
                 let data = {
                     'boardSeq': this.boardSeq,
-                    'commentSeq': this.commentSeq,
-                    'userSeq': this.getUserData.seq
+                    'commentSeq': this.commentSeq
                 };
                 this.$store.dispatch('GET_COMMENT_LIST', data)
                     .then((data) => {
@@ -178,6 +183,9 @@
                         }
                         this.commentSeq = data[data.length - 1].seq;
                     });
+            },
+            updateReplyComments(data) {
+                this.comments.find(e => e.seq === data[0].parent).reply.unshift(...data);
             },
             deleteComment(seq) {
                 this.comments = this.comments.map(e => {

@@ -6,7 +6,7 @@ help() {
     echo "\tinit - Image build and Docker run"
     echo "\tstart - Docker restart"
     echo "\tstop - Docker stop"
-    echo "\tdelete - Docker stop and Docker remove (with Build image)"
+    echo "\trm - Docker stop and Docker remove (with Build image)"
 }
 
 if [ $1 == 'init' ];then
@@ -19,7 +19,7 @@ elif [ $1 == 'start' ];then
 elif [ $1 == 'stop' ];then
     echo "loading..." &&
     docker stop chat1 && docker stop chat2 && docker stop chat3
-elif [ $1 == 'delete' ];then
+elif [ $1 == 'rm' ];then
     echo "loading..." &&
     docker stop chat1 && docker stop chat2 && docker stop chat3 &&
     docker rm chat1 && docker rm chat2 && docker rm chat3 &&
