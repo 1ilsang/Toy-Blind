@@ -1,0 +1,41 @@
+{
+  "name": "blind",
+  "version": "1.0.0",
+  "description": "root package",
+  "main": "no",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ilsang/Toy-Blind.git"
+  },
+  "keywords": [
+    "eslint"
+  ],
+  "author": "1ilsang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1ilsang/Toy-Blind/issues"
+  },
+  "homepage": "https://github.com/1ilsang/Toy-Blind#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@vue/cli-plugin-babel": "next",
+    "@vue/cli-plugin-e2e-cypress": "next",
+    "@vue/cli-plugin-eslint": "next",
+    "@vue/cli-plugin-pwa": "next",
+    "@vue/cli-plugin-unit-mocha": "next",
+    "@vue/cli-service": "next",
+    "@vue/eslint-config-airbnb": "latest",
+    "@vue/test-utils": "latest",
+    "chai": "latest",
+    "eslint": "^6.0.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-vue": "^5.2.3",
+    "sass": "latest",
+    "sass-loader": "latest",
+    "vue-template-compiler": "latest"
+  }
+}

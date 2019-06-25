@@ -1,9 +1,9 @@
-import {IS_VALIDATION_TOKEN, LOGIN, LOGOUT} from "../const/user-type";
-import {enhanceAccessToken, logout} from "../../utils/loginMethods";
+import {IS_VALIDATION_TOKEN, LOGIN, LOGOUT} from '../const/user-type';
+import {enhanceAccessToken, logout} from '../../utils/loginMethods';
 import axios from 'axios';
 import server from '../../const/server-host';
-import {EventBus} from "../../utils/event-bus";
-import router from "../../router";
+import {EventBus} from '../../utils/event-bus';
+import router from '../../router';
 
 
 const state = {
@@ -65,4 +65,4 @@ export default {
     getters,
     mutations,
     actions
-}
+};

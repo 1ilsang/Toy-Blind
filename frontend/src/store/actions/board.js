@@ -1,6 +1,6 @@
-import {DELETE_POST, GET_POST, GET_POST_LIST, UPDATE_POST, WRITE_POST} from "../const/board-type";
-import axios from "axios";
-import server from "../../const/server-host";
+import {DELETE_POST, GET_POST, GET_POST_LIST, UPDATE_POST, WRITE_POST} from '../const/board-type';
+import axios from 'axios';
+import server from '../../const/server-host';
 
 export const actions = {
     [GET_POST_LIST]({commit}, {topic, boardSeq}) {

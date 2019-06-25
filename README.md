@@ -32,6 +32,7 @@
    6. [채팅 소켓 로드벨런싱 - HAProxy, Docker, Redis-pubsub, ShellScript](http://1ilsang.blog.me/221563459499)
    7. [댓글 구현 및 문제점과 의문](http://1ilsang.blog.me/221566493707)
    8. [대댓글 구현하기 - 디비 성능 개선기](http://1ilsang.blog.me/221569040532)
+   9. [ESLint 적용하기](https://1ilsang.blog.me/221570867392)
    <br>
    개발중 ...
 
