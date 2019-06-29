@@ -123,7 +123,7 @@
                         v-if="Boolean(getUserData.nickname)"
                         :board-seq="boardSeq"
                         @updateComments="updateComments"
-                ></WriteComment>
+                />
             </section>
         </div>
     </div>

@@ -19,9 +19,12 @@
     "url": "https://github.com/1ilsang/Toy-Blind/issues"
   },
   "homepage": "https://github.com/1ilsang/Toy-Blind#readme",
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^3.5.2"
+  },
   "devDependencies": {
     "@babel/core": "latest",
+    "@typescript-eslint/eslint-plugin-tslint": "^1.11.0",
     "@vue/cli-plugin-babel": "next",
     "@vue/cli-plugin-e2e-cypress": "next",
     "@vue/cli-plugin-eslint": "next",
@@ -36,6 +39,7 @@
     "eslint-plugin-vue": "^5.2.3",
     "sass": "latest",
     "sass-loader": "latest",
+    "tslint": "^5.18.0",
     "vue-template-compiler": "latest"
   }
 }

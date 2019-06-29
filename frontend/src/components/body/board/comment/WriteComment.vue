@@ -39,7 +39,7 @@ export default {
                 'user_seq': this.getUserData.seq,
                 'board_seq': this.boardSeq,
                 'description': this.description,
-                'parent': null
+                'parent': 0
             };
 
             this.$store.dispatch('WRITE_COMMENT', data)
@@ -57,7 +57,8 @@ export default {
 .comment_write {
     border: 1px solid #da3228;
     background-color: white;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     bottom: 0;
 }
 
