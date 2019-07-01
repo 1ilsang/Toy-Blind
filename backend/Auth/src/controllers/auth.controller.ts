@@ -117,13 +117,13 @@ async function login(req: Request, res: Response, next: NextFunction): Promise<R
 
 async function logout(req: IRequestWithToken, res: Response): Promise<void> {
     await jwt.verify(req.token, jwtConfig.secret, (err, authorizedData) => {
-        if (err) console.error(err);
+        if (err) console.error(err.message);
         // @ts-ignore
         else redis.client.del(`${authorizedData.email}`, (e) => {
-            if (err) console.error(e);
+            if (e) console.error(e.message);
         });
+        res.status(200).end();
     });
-    return res.status(200).end();
 }
 
 export {test, tokenCheck, signUp, code, info, login, logout };

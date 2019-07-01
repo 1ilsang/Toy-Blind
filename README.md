@@ -34,6 +34,7 @@
    8. [대댓글 구현하기 - 디비 성능 개선기](http://1ilsang.blog.me/221569040532)
    9. [ESLint 적용하기](https://1ilsang.blog.me/221570867392)
    10. [Auth 서버 TypeScript 적용 및 모듈화 + TSLint](https://1ilsang.blog.me/221573977959)
+   11. [API-Gateway 구현과 Buffer 처리](https://1ilsang.blog.me/221575505442)
    <br>
    개발중 ...
 

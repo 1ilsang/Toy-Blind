@@ -12,7 +12,7 @@ export const actions = {
             });
     },
     [WRITE_POST]({commit}, {data, config}) {
-        return axios.post(`${server.BoardServer}/board`, data, config)
+        return axios.post(`${server.BoardServer}/board`, data, config.headers)
             .then(({data}) => {
                 return data;
             });

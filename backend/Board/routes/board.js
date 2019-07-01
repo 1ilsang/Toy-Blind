@@ -27,7 +27,7 @@ router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
-router.post('/', token.get, token.check, upload.single('userfile'), (req, res, next) => {
+router.post('/', upload.single('userfile'), (req, res, next) => {
     // 이미지 리사이즈(클라우드 펑션) 후 썸네일과 데이터 디비 저장.
     if(req.file) {
         axios.get(`https://us-central1-sendmailer-242606.cloudfunctions.net/gcp-upload2?filename=${req.file.filename}`)
@@ -42,7 +42,7 @@ router.post('/', token.get, token.check, upload.single('userfile'), (req, res, n
                     thumbPath,
                     req.body.topic
                 ];
-
+                console.log('file', SQL_VALUE);
                 mysqlPool.query(SQL, SQL_VALUE, (err, reply) => {
                     if (err) res.status(400).send(MESSAGE.validationError);
                     else res.status(200).end();
@@ -56,6 +56,7 @@ router.post('/', token.get, token.check, upload.single('userfile'), (req, res, n
             req.body.description,
             req.body.topic
         ];
+        console.log(SQL_VALUE);
         mysqlPool.query(SQL, SQL_VALUE, (err,  reply) =>  {
             if(err) res.status(400).send(MESSAGE.validationError);
             else res.status(200).end();
@@ -140,7 +141,7 @@ router.post('/article/view', (req, res, next) => {
 
 router.delete('/:boardSeq', token.get, token.check, (req, res, next) => {
     jwt.verify(req.token, jwtConfig.secret, (err, authorizedData) => {
-        if(err) {
+        if (err) {
             res.status(403).send(MESSAGE.validationError);
             return;
         }
@@ -150,11 +151,11 @@ router.delete('/:boardSeq', token.get, token.check, (req, res, next) => {
             authorizedData.seq
         ];
         mysqlPool.query(SQL, SQL_VALUE, (err, reply) => {
-            if(err) res.status(400).send(MESSAGE.validationError);
+            if (err) res.status(400).send(MESSAGE.validationError);
             else {
                 const IN_SQL = "DELETE FROM board WHERE seq = ?";
                 mysqlPool.query(IN_SQL, reply[0].seq, (err, reply) => {
-                    if(err) res.status(400).send(MESSAGE.validationError);
+                    if (err) res.status(400).send(MESSAGE.validationError);
                     else res.status(200).end();
                 });
             }
@@ -164,7 +165,7 @@ router.delete('/:boardSeq', token.get, token.check, (req, res, next) => {
 
 router.put('/:boardSeq', token.get, token.check, (req, res, next) => {
     jwt.verify(req.token, jwtConfig.secret, (err, authorizedData) => {
-        if(err) {
+        if (err) {
             res.status(403).send(MESSAGE.validationError);
             return;
         }
@@ -174,7 +175,7 @@ router.put('/:boardSeq', token.get, token.check, (req, res, next) => {
             authorizedData.seq
         ];
         mysqlPool.query(SQL, SQL_VALUE, (err, reply) => {
-            if(err) res.status(400).send(MESSAGE.validationError);
+            if (err) res.status(400).send(MESSAGE.validationError);
             else {
                 const IN_SQL = "UPDATE board SET title = ?, description = ? WHERE seq = ?";
                 const IN_SQL_VALUE = [
@@ -183,7 +184,7 @@ router.put('/:boardSeq', token.get, token.check, (req, res, next) => {
                     reply[0].seq
                 ];
                 mysqlPool.query(IN_SQL, IN_SQL_VALUE, (err, reply) => {
-                    if(err) res.status(400).send(MESSAGE.validationError);
+                    if (err) res.status(400).send(MESSAGE.validationError);
                     else res.status(200).end();
                 });
             }

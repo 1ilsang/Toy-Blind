@@ -77,7 +77,7 @@ export default {
             }
             this.isLoading = true;
             const config = {
-                header: {
+                headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             };

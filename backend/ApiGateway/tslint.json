@@ -1,0 +1,26 @@
+// tslint -c tslint.json 'src/**/*.ts'
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "max-line-length": false,
+    "no-namespace": true,
+    "curly": [
+      true,
+      "as-needed"
+    ],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "no-string-literal": false,
+    "no-console": {
+      "severity": "warning",
+      "options": [
+        "log"
+      ]
+    }
+  }
+}

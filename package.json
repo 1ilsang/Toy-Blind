@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/1ilsang/Toy-Blind#readme",
   "dependencies": {
+    "qs": "^6.7.0",
     "typescript": "^3.5.2"
   },
   "devDependencies": {
