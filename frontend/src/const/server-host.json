@@ -1,5 +1,5 @@
 {
-  "AuthServer": "http://127.0.0.1:3030",
-  "BoardServer": "http://127.0.0.1:3030",
-  "ChatServer": "http://127.0.0.1:3009"
+  "AuthServer": "http://127.0.0.1:3100",
+  "BoardServer": "http://127.0.0.1:3100",
+  "ChatServer": "http://127.0.0.1:3002"
 }

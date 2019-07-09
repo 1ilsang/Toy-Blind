@@ -1,5 +1,10 @@
 # Toy-Blind
 
+<a href="https://1ilsang.blog.me/"><img src="https://img.shields.io/badge/blog-1ilsang.blog.me-red.svg" /></a>
+<a href="#"><img src="https://img.shields.io/github/last-commit/1ilsang/Toy-Blind.svg?style=flat" /></a>
+<a href="#"><img src="https://img.shields.io/github/languages/top/1ilsang/Toy-Blind.svg?style=flat" /></a>
+<a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
+
 ### 0. 목표
    - 블라인드 앱을 모방해 보자.
    - <img src=".readmedoc/img/sample.gif" width="300" alt="Sample image" />
@@ -39,10 +44,9 @@
    개발중 ...
 
 ### 5. 어떻게 실행하나요?
-   - 이후 수정할 계획. 아직 실행되지 않습니다.
-   - //Redis, MySQL 이 설치되어 있어야 합니다.
-   - //MySQL 테이블 정보는 덤프파일을 사용해 주세요.
-   - //통합 커멘드 라인을 지원합니다
+   - Redis, MySQL 이 설치되어 있어야 합니다.
+   - MySQL 테이블 정보는 덤프파일을 사용해 주세요.
+   - 통합 커멘드 라인을 지원합니다
        ``` bash
        chmod +x cmd.sh
        sh cmd.sh [target] [option]

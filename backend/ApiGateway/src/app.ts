@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as bodyparser from 'body-parser';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 
@@ -28,7 +27,7 @@ export class App {
     }
 
     private settings() {
-        this.app.set('port', process.env.PORT || this.port || 3030);
+        this.app.set('port', process.env.PORT || this.port || 3100);
     }
 
     private middleware() {

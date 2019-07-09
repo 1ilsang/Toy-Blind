@@ -36,6 +36,7 @@ if [ $target == 'front' ];then
 elif [ $target == 'back' ];then
 	cd backend
 	if [ $option == 'start' ];then
+	# DB(Local) -> Redis(Docker) -> ChatServer(Docker) -> HAproxy(Local) -> API-Gateway(Local) -> Board(Local) -> Auth(Local) -> LogServer(Docker)
 		echo '\nSCRIPT :: backend-start'
 		npm run start
 	else

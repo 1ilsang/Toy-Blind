@@ -7,7 +7,7 @@ import {verifyCheck} from '../utils/jwtToken.util';
 
 function tokenCheck(req: IRequestWithToken, res: Response) {
     verifyCheck(req.token).then((ret) => {
-        if (ret) return res.status(200).send('Valid');
+        if (ret) return res.status(200).send({token: req.token});
         else return res.status(400).send('Invalid');
     });
 }
